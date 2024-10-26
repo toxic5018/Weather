@@ -1,6 +1,6 @@
 # toxic5018.github.io
 
-Welcome to my official game development portfolio! Here, you can explore the games I've created, featuring various genres and unique gameplay mechanics. 
+Welcome to my official game development portfolio! Here, you can explore the games I've created, featuring various genres and unique gameplay mechanics.
 
 ## My Games
 
@@ -33,4 +33,4 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 [Visit My GitHub](https://github.com/toxic5018)
 
 ## Contact
-- Email: toxic5018@example.com
+- Email: toxicbusinessstudios@gmail.com
