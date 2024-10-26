@@ -1,5 +1,8 @@
 # toxic5018.github.io
 
+**Follow Me On**:  
+[YouTube](https://www.youtube.com/@toxic5018.3) | [TikTok](https://www.tiktok.com/@toxic5018yt)
+
 Welcome to my official game development portfolio! Here, you can explore the games I've created, featuring various genres and unique gameplay mechanics.
 
 ## My Games
@@ -34,3 +37,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
 ## Contact
 - Email: toxicbusinessstudios@gmail.com
+
+---
+
+© [2024] Toxic Studios. **Do Not Distribute!!**
