@@ -3,32 +3,29 @@
 **Follow Me On**:  
 [YouTube](https://www.youtube.com/@toxic5018.3) | [TikTok](https://www.tiktok.com/@toxic5018yt)
 
+![Fruit Ninja](./fruit-ninja.png)
+
 Welcome to my official game development portfolio! Here, you can explore the games I've created, featuring various genres and unique gameplay mechanics.
 
 ## My Games
 
-### 1. Minecraft Custom Edition (Version 0.1.2053.2_0.30)
-- **Genre**: Sandbox, Adventure
-- **Description**: A customized version of Minecraft with added textures, blocks, and gameplay mechanics.
-- **Key Features**:
-  - Customized textures
-  - Player control modifications
-  - Special block interactions
-
-### 2. Flappy Bird Clone
-- **Genre**: Arcade
-- **Description**: A Flappy Bird-inspired game developed in C#, featuring dynamic and static player states.
-- **Key Features**:
-  - Flapping mechanics
-  - Player state management
-
-### 3. Fruit Ninja Clone
+### Fruit Ninja
 - **Genre**: Arcade, Action
 - **Description**: A web-based Fruit Ninja clone with enhanced features such as combos and critical hits.
 - **Key Features**:
   - Combo system
   - Critical hit chance
   - Life system with game-over mechanics
+
+### Preview Images
+1. ![Preview 1](./images/preview1.png)
+2. ![Preview 2](./images/preview2.png)
+3. ![Preview 3](./images/preview3.png)
+4. ![Preview 4](./images/preview4.png)
+5. ![Preview 5](./images/preview5.png)
+
+### Download
+- **Download the game**: [Fruit Ninja Clone Download](#) (Replace with your actual link)
 
 ## About Me
 I'm a passionate game developer who loves experimenting with new ideas and creating engaging gameplay experiences. Check out my projects and feel free to contribute or leave feedback!
