@@ -3,33 +3,35 @@
 **Warning**: ⚠️ **WEBSITE IN DEVELOPMENT** ⚠️
 
 **Follow Me On**:  
-[YouTube](https://www.youtube.com/@toxic5018.3) | [TikTok](https://www.tiktok.com/@toxic5018yt) | **Settings**  
-<div style="display: inline-block; margin-left: 10px;">
-  <select id="settingsDropdown" onchange="settingsAction(event)">
-    <option value="">Settings</option>
-    <option value="darkmode">Dark Mode ON/OFF</option>
-    <option value="aboutme">About Me</option>
-  </select>
-</div>
+[YouTube](https://www.youtube.com/@toxic5018.3) | [TikTok](https://www.tiktok.com/@toxic5018yt)  
+**Settings**:  
+<select onchange="changeSetting(this)">
+  <option value="darkMode">Dark Mode ON/OFF</option>
+  <option value="aboutMe">About Me</option>
+</select>
 
 ![Fruit Ninja](./fruit-ninja.png)
 
 ## Modded Fruit Ninja
+- **Genre**: Arcade, Action  
+- **Description**: Fruit Ninja modded versions with new gameplay mechanics, skins, and themes.
 
-- **Fruit Ninja CRAZY GHOSTBUSTERS**:  
-  <img src="https://f4.bcbits.com/img/a0356558918_65" alt="FN Ghostbusters Icon" width="20" height="20"/>  
-  *A modified version of Fruit Ninja featuring Ghostbusters-themed graphics and gameplay mechanics. Released in 2014 (Version 2.1.0).*  
-  [Download Now (2.1.0 LATEST) (Year 2014)](https://www.mediafire.com/file/p281pfhcgdipw8n/Fruit_Ninja_Ghostbusters_Mod_By_Superstrongtaner_%2528Revised%2529.zip/file){:target="_blank"}
+<details>
+  <summary>Click to See More (+)</summary>
+  
+  ### Fruit Ninja CRAZY GHOSTBUSTERS:
+  - *A modified version of Fruit Ninja featuring Ghostbusters-themed graphics and gameplay mechanics. Released in 2014 (Version 2.1.0).*  
+  - **Download**:  
+    <img src="https://f4.bcbits.com/img/a0356558918_65" alt="FN Ghostbusters Icon" width="20" height="20"/>  
+    [Download Now (2.1.0 LATEST) (Year 2014)](https://www.mediafire.com/file/p281pfhcgdipw8n/Fruit_Ninja_Ghostbusters_Mod_By_Superstrongtaner_%2528Revised%2529.zip/file){:target="_blank"}
+  
+  ### Fruit Ninja CHINESE:
+  - *The Chinese version of Fruit Ninja, with unique features and enhancements. Released in 2016 (Version 3.55.0).*  
+  - **Download**:  
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCZo4oOwnyhDDrrVgqF_HU1fKtr47mr-YSYQ&s" alt="FN Chinese Icon" width="20" height="20"/>  
+    [Download Now (3.55.0 LATEST) (Year 2016)](https://www.mediafire.com/file/gqi330uzno5ka0d/Fruit_Ninja_Chinese_%2528Revised%2529.apk/file){:target="_blank"}
 
-- **Fruit Ninja CHINESE**:  
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCZo4oOwnyhDDrrVgqF_HU1fKtr47mr-YSYQ&s" alt="FN Chinese Icon" width="20" height="20"/>  
-  *The Chinese version of Fruit Ninja, with unique features and enhancements. Released in 2016 (Version 3.55.0).*  
-  [Download Now (3.55.0 LATEST) (Year 2016)](https://www.mediafire.com/file/gqi330uzno5ka0d/Fruit_Ninja_Chinese_%2528Revised%2529.apk/file){:target="_blank"}
-
-- **+ View More Mods**  
-  <div id="moreMods" style="display:none;">
-    <p>Details about additional mods or versions can go here...</p>
-  </div>
+</details>
 
 ### Preview Images
 <div style="display: flex; overflow-x: scroll;">
@@ -57,30 +59,3 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 **Version 1.0.0**
 
 © [2024] Toxic Studios. **Do Not Distribute!!**
-
-<script>
-  function settingsAction(event) {
-    const action = event.target.value;
-    if (action === 'darkmode') {
-      // Toggle Dark Mode (Implementation can be done here)
-      document.body.classList.toggle("dark-mode");
-      alert("Dark Mode toggled!");
-    } else if (action === 'aboutme') {
-      // Scroll to About Me section
-      document.getElementById('aboutmeSection').scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
-  // Toggle Mod visibility
-  document.getElementById("moreMods").style.display = "none";
-  function toggleMods() {
-    var mods = document.getElementById("moreMods");
-    if (mods.style.display === "none") {
-      mods.style.display = "block";
-      document.getElementById("toggleButton").innerText = "- View Less Mods";
-    } else {
-      mods.style.display = "none";
-      document.getElementById("toggleButton").innerText = "+ View More Mods";
-    }
-  }
-</script>
