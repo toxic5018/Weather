@@ -5,7 +5,7 @@
 **Follow Me On**:  
 [YouTube](https://www.youtube.com/@toxic5018.3) | [TikTok](https://www.tiktok.com/@toxic5018yt)
 
-![Fruit Ninja](./fruit-ninja.png)
+---
 
 ## Modded Fruit Ninja
 - **Genre**: Arcade, Action  
