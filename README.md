@@ -2,8 +2,21 @@
 
 **Warning**: ⚠️ **WEBSITE IN DEVELOPMENT** ⚠️
 
-**Follow Me On**:  
-[YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018)
+## Main Content
+<div style="display: flex; justify-content: space-between;">
+
+  <!-- Left Side: What's New? -->
+  <div style="width: 70%;">
+    ### What's New?
+    <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightblue; border: none; cursor: pointer;">Click to View What's New</button>
+  </div>
+
+  <!-- Right Side: Social Tabs -->
+  <div style="width: 30%; text-align: right;">
+    **Follow Me On**:  
+    [YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018)
+  </div>
+</div>
 
 ---
 
@@ -94,5 +107,58 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
   a {
     font-family: Arial, sans-serif;
   }
+
+  /* Modal Style */
+  #whatsNewModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+    padding-top: 60px;
+  }
+
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+  }
+
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
 
+<!-- Modal for What's New -->
+<div id="whatsNewModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
+    <h2>What's New?</h2>
+    <p><strong>Version: 1.0.0</strong></p>
+    <p>- Major Updates</p>
+    <ul>
+      <li>Improved gameplay mechanics</li>
+      <li>New Ghostbusters theme</li>
+      <li>Bug fixes for better performance</li>
+      <li>Updated features for smoother experience</li>
+    </ul>
+  </div>
+</div>
