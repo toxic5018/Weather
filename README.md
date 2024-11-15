@@ -25,11 +25,22 @@ Welcome to my official game development portfolio! Here, you can explore the gam
 5. ![Preview 5](./images/preview5.png)
 
 ### Download
+
 - **Fruit Ninja CRAZY GHOSTBUSTERS**:  
-  <img src="https://www.svgrepo.com/show/255837/zip.svg" alt="ZIP Icon" width="20" height="20"/> [Download Now (2.1.0 LATEST) (Year 2014)](https://www.mediafire.com/file/p281pfhcgdipw8n/Fruit_Ninja_Ghostbusters_Mod_By_Superstrongtaner_%2528Revised%2529.zip/file)
+  <img src="https://f4.bcbits.com/img/a0356558918_65" alt="FN Ghostbusters Icon" width="20" height="20"/>  
+  [Download Now (2.1.0 LATEST) (Year 2014)](https://www.mediafire.com/file/p281pfhcgdipw8n/Fruit_Ninja_Ghostbusters_Mod_By_Superstrongtaner_%2528Revised%2529.zip/file){:target="_blank"}  
+  *You will be redirected to Mediafire. Are you sure? (Continue/Cancel)*
 
 - **Fruit Ninja CHINESE**:  
-  <img src="https://cdn-icons-png.flaticon.com/512/9704/9704665.png" alt="OBB Icon" width="20" height="20"/> [Download Now (3.55.0 LATEST) (Year 2016)](https://www.mediafire.com/file/gqi330uzno5ka0d/Fruit_Ninja_Chinese_%2528Revised%2529.apk/file)
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCZo4oOwnyhDDrrVgqF_HU1fKtr47mr-YSYQ&s" alt="FN Chinese Icon" width="20" height="20"/>  
+  [Download Now (3.55.0 LATEST) (Year 2016)](https://www.mediafire.com/file/gqi330uzno5ka0d/Fruit_Ninja_Chinese_%2528Revised%2529.apk/file){:target="_blank"}  
+  *You will be redirected to Mediafire. Are you sure? (Continue/Cancel)*
+
+## Fruit Ninja Crazy Ghostbusters Previews
+
+1. ![Preview 1](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ76ToYnKh3DfNn3ImRApiqbI3_AXVZXiVPcLsAj8HePWnVbl6KerFVwrjvDb7o77qXLH8&usqp=CAU)
+2. ![Preview 2](https://pbs.twimg.com/media/B0n_YwMCIAAEm34.jpg)
+3. ![Preview 3](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQWtChQs-Bezl29ilSu6hNKMLOY-KM8JGYWhX_dq9ZV8VZ-NWwH-kJHnaJzff1Yt44_uQ&usqp=CAU)
 
 ## About Me
 I'm a passionate game developer who loves experimenting with new ideas and creating engaging gameplay experiences. Check out my projects and feel free to contribute or leave feedback!
