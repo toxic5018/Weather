@@ -58,8 +58,12 @@ Author => SUPERSTRONGERTANER
 ### Fruit Ninja EXTREME I/II/III/IV/V/GHOSTBUSTER/DISCO BY SUPERSTRONGERTANER
 Fruit Ninja EXTREME V1:
 Author => SUPERSTRONGERTANER
-- *A modified version of Fruit Ninja featuring Disco-themed graphics and ultimate 5th Anniversary gameplay mechanics. Released in 2015 (Version 2.3.2).*  
+- *A modified version of Fruit Ninja... Released in 2011 (Version 1.7.2).*  
 - **Not Availatble Yet :(**
+
+More Mods Coming Soon :D
+
+---
 
 ## Q&A Session
 If there’s anything that needs to be added, like modded content or other features, contact me through my business email with a valid link and the exact date when the original version was publicly released.  
