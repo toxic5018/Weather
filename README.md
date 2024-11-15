@@ -13,10 +13,14 @@
 
 </div>
 
---
 <!-- Social Media Links Below -->
-**Follow Me On**:  
-[YouTube](https://www.youtube.com/@toxic5018.2) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018)
+<div style="width: 100%; text-align: center; padding-top: 10px;">
+  **Follow Me On**:  
+  <a href="https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy" target="_blank">YouTube</a> | 
+  <a href="https://www.tiktok.com/@toxic5018yt" target="_blank">TikTok</a> | 
+  <a href="https://discord.gg/5PQ68Sgqav" target="_blank">Discord</a> | 
+  <a href="https://www.twitch.tv/toxic5018" target="_blank">Twitch</a>
+</div>
 
 ---
 
@@ -39,31 +43,14 @@
 </div>
 
 ### Fruit Ninja CRAZY GHOSTBUSTERS:
-Author => SUPERSTRONGERTANER
 - *A modified version of Fruit Ninja featuring Ghostbusters-themed graphics and gameplay mechanics. Released in 2014 (Version 2.1.0).*  
 - **APK | ZIP + OBB Download Now (2.1.0 LATEST) (Year 2014)**  
   <a href="https://www.mediafire.com/file/p281pfhcgdipw8n/Fruit_Ninja_Ghostbusters_Mod_By_Superstrongtaner_%2528Revised%2529.zip/file" target="_blank" style="font-family: Arial, sans-serif; font-weight: bold; color: lightgreen;">Download Now</a>
 
 ### Fruit Ninja CHINESE:
-Author => Chinese Group
 - *The Chinese version of Fruit Ninja, with unique features and enhancements. Released in 2016 (Version 3.55.0).*  
 - **APK | Download Now (3.55.0 LATEST) (Year 2016)**  
   <a href="https://www.mediafire.com/file/gqi330uzno5ka0d/Fruit_Ninja_Chinese_%2528Revised%2529.apk/file" target="_blank" style="font-family: Arial, sans-serif; font-weight: bold; color: lightgreen;">Download Now</a>
-
-### Fruit Ninja CRAZY DISCO:
-Author => SUPERSTRONGERTANER
-- *A modified version of Fruit Ninja featuring Disco-themed graphics and ultimate 5th Anniversary gameplay mechanics. Released in 2015 (Version 2.3.2).*  
-- **Not Availatble Yet :(**
-
-### Fruit Ninja EXTREME I/II/III/IV/V/GHOSTBUSTER/DISCO BY SUPERSTRONGERTANER
-Fruit Ninja EXTREME V1:
-Author => SUPERSTRONGERTANER
-- *A modified version of Fruit Ninja... Released in 2011 (Version 1.7.2).*  
-- **Not Availatble Yet :(**
-
-More Mods Coming Soon :D
-
----
 
 ## Q&A Session
 If there’s anything that needs to be added, like modded content or other features, contact me through my business email with a valid link and the exact date when the original version was publicly released.  
@@ -84,9 +71,18 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
 © [2024] Toxic Studios. **Do Not Distribute!!**
 
-<!-- AdSense Script -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2851265996786440"
-     crossorigin="anonymous"></script>
+<!-- AdSense Script for Ads -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2851265996786440" crossorigin="anonymous"></script>
+<!-- ad_display0 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2851265996786440"
+     data-ad-slot="8926450639"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <!-- Theme Script: Detect System Theme (Dark/Light Mode) -->
 <script>
@@ -173,16 +169,12 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
     <h2>What's New?</h2>
     <p><strong>Version: 1.0.0</strong></p>
-    <p>- Major Updates</p>
+    <p><strong>- Major Updates:</strong></p>
     <ul>
-      <li>Improved gameplay mechanics</li>
-      <li>Dark Mode</li>
-      <li>Enhanced user interface</li>
-      <li>Added Fruit Ninja Mods for people who NEVER tried it Out</li>
-      <li>Improvements</li>
-      <li>First Release</li>
-      <li>Terms and Policies and Consent via Website!</li>
-      <li>Bug fixes</li>
+      <li>Added new social media links</li>
+      <li>Introduced dark/light mode for better user experience</li>
+      <li>Improved UI for better accessibility</li>
     </ul>
   </div>
 </div>
+
