@@ -3,14 +3,14 @@
 **Warning**: ⚠️ **WEBSITE IN DEVELOPMENT** ⚠️
 
 **Follow Me On**:  
-[YouTube](https://www.youtube.com/@toxic5018.3) | [TikTok](https://www.tiktok.com/@toxic5018yt)
+[YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018)
 
 ---
 
 ## Recent YouTube Video
 <div style="text-align: center;">
   <h3>Check Out My Recent Video</h3>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed?listType=playlist&list=UUpVo5Uq2g9z09S5uZY2ehNQ&autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed?listType=playlist&list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy&autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ## Modded Fruit Ninja
@@ -29,13 +29,13 @@
 - *A modified version of Fruit Ninja featuring Ghostbusters-themed graphics and gameplay mechanics. Released in 2014 (Version 2.1.0).*  
 - **Download**:  
   <img src="https://f4.bcbits.com/img/a0356558918_65" alt="FN Ghostbusters Icon" width="20" height="20"/>  
-  <a href="data:application/zip;base64,INSERT-YOUR-FILE-DATA-HERE" download="Fruit_Ninja_Ghostbusters_Mod_2.1.0.zip" style="font-family: Arial, sans-serif; font-weight: bold; color: #000000;">Download Now (2.1.0 LATEST) (Year 2014)</a>
+  <a href="https://www.mediafire.com/file/p281pfhcgdipw8n/Fruit_Ninja_Ghostbusters_Mod_By_Superstrongtaner_%2528Revised%2529.zip/file" target="_blank" style="font-family: Arial, sans-serif; font-weight: bold; color: #000000;">Download Now (2.1.0 LATEST) (Year 2014)</a>
 
 ### Fruit Ninja CHINESE:
 - *The Chinese version of Fruit Ninja, with unique features and enhancements. Released in 2016 (Version 3.55.0).*  
 - **Download**:  
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCZo4oOwnyhDDrrVgqF_HU1fKtr47mr-YSYQ&s" alt="FN Chinese Icon" width="20" height="20"/>  
-  <a href="data:application/vnd.android.package-archive;base64,INSERT-YOUR-APK-DATA-HERE" download="Fruit_Ninja_Chinese_3.55.0.apk" style="font-family: Arial, sans-serif; font-weight: bold; color: #000000;">Download Now (3.55.0 LATEST) (Year 2016)</a>
+  <a href="https://www.mediafire.com/file/gqi330uzno5ka0d/Fruit_Ninja_Chinese_%2528Revised%2529.apk/file" target="_blank" style="font-family: Arial, sans-serif; font-weight: bold; color: #000000;">Download Now (3.55.0 LATEST) (Year 2016)</a>
 
 ## Q&A Session
 If there’s anything that needs to be added, like modded content or other features, contact me through my business email with a valid link and the exact date when the original version was publicly released.  
