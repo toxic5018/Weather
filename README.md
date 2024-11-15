@@ -14,13 +14,8 @@
 </div>
 
 <!-- Social Media Links Below -->
-<div style="width: 100%; text-align: center; padding-top: 10px;">
-  **Follow Me On**:  
-  <a href="https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy" target="_blank">YouTube</a> | 
-  <a href="https://www.tiktok.com/@toxic5018yt" target="_blank">TikTok</a> | 
-  <a href="https://discord.gg/5PQ68Sgqav" target="_blank">Discord</a> | 
-  <a href="https://www.twitch.tv/toxic5018" target="_blank">Twitch</a>
-</div>
+**Follow Me On**:  
+[YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018)
 
 ---
 
