@@ -176,8 +176,12 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     <p>- Major Updates</p>
     <ul>
       <li>Improved gameplay mechanics</li>
-      <li>New Ghostbusters theme</li>
+      <li>Dark Mode</li>
       <li>Enhanced user interface</li>
+      <li>Added Fruit Ninja Mods for people who NEVER tried it Out</li>
+      <li>Improvements</li>
+      <li>First Release</li>
+      <li>Terms and Policies and Consent via Website!</li>
       <li>Bug fixes</li>
     </ul>
   </div>
