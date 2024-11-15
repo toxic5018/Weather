@@ -3,12 +3,7 @@
 **Warning**: ⚠️ **WEBSITE IN DEVELOPMENT** ⚠️
 
 **Follow Me On**:  
-[YouTube](https://www.youtube.com/@toxic5018.3) | [TikTok](https://www.tiktok.com/@toxic5018yt)  
-**Settings**:  
-<select onchange="changeSetting(this)">
-  <option value="darkMode">Dark Mode ON/OFF</option>
-  <option value="aboutMe">About Me</option>
-</select>
+[YouTube](https://www.youtube.com/@toxic5018.3) | [TikTok](https://www.tiktok.com/@toxic5018yt)
 
 ![Fruit Ninja](./fruit-ninja.png)
 
