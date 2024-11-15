@@ -46,7 +46,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 [Visit My GitHub](https://github.com/toxic5018)
 
 ## Contact
-- Email: [toxicbusinessstudios@gmail.com](https://mail.google.com/mail/u/0/#inbox?compose=CllgCJZcRZmcXcvPKpTkxzzJxWMgBxwzNXGqCjkNhDWVBGgwXPFJtZbcbmXknLfTbffPHHdTdhg)
+- Email: [toxicbusinessstudios@gmail.com](mailto:toxicbusinessstudios@gmail.com)
 
 ---
 
@@ -101,6 +101,6 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 ### Website Icon
 ![Website Icon](https://toxic5018.github.io/website_icon.png)
 
-<!-- Favicon for the website tab -->
+<!-- Favicon (Website Tab Icon) -->
 <link rel="icon" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/Copy_of__ChromeSocial_customizeColors_V02.gif" type="image/gif">
 
