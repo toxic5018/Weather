@@ -17,7 +17,7 @@
 - **Description**: Fruit Ninja modded versions with new gameplay mechanics, skins, and themes.
 
 <details>
-  <summary>Click to See More (+)</summary>
+  <summary><strong style="font-family: 'Sen', sans-serif;">Download</strong></summary>
   
   ### Fruit Ninja CRAZY GHOSTBUSTERS:
   - *A modified version of Fruit Ninja featuring Ghostbusters-themed graphics and gameplay mechanics. Released in 2014 (Version 2.1.0).*  
