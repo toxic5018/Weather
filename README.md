@@ -25,7 +25,11 @@ Welcome to my official game development portfolio! Here, you can explore the gam
 5. ![Preview 5](./images/preview5.png)
 
 ### Download
-- **Download the game**: [Fruit Ninja Clone Download](#) (Replace with your actual link)
+- **Fruit Ninja CRAZY GHOSTBUSTERS**:  
+  <img src="https://www.svgrepo.com/show/255837/zip.svg" alt="ZIP Icon" width="20" height="20"/> [Download Now (2.1.0 LATEST) (Year 2014)](https://www.mediafire.com/file/p281pfhcgdipw8n/Fruit_Ninja_Ghostbusters_Mod_By_Superstrongtaner_%2528Revised%2529.zip/file)
+
+- **Fruit Ninja CHINESE**:  
+  <img src="https://cdn-icons-png.flaticon.com/512/9704/9704665.png" alt="OBB Icon" width="20" height="20"/> [Download Now (3.55.0 LATEST) (Year 2016)](https://www.mediafire.com/file/gqi330uzno5ka0d/Fruit_Ninja_Chinese_%2528Revised%2529.apk/file)
 
 ## About Me
 I'm a passionate game developer who loves experimenting with new ideas and creating engaging gameplay experiences. Check out my projects and feel free to contribute or leave feedback!
