@@ -54,3 +54,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 **Version 1.0.0**
 
 © [2024] Toxic Studios. **Do Not Distribute!!**
+
+<!-- AdSense Script -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2851265996786440"
+     crossorigin="anonymous"></script>
