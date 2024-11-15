@@ -39,14 +39,27 @@
 </div>
 
 ### Fruit Ninja CRAZY GHOSTBUSTERS:
+Author => SUPERSTRONGERTANER
 - *A modified version of Fruit Ninja featuring Ghostbusters-themed graphics and gameplay mechanics. Released in 2014 (Version 2.1.0).*  
 - **APK | ZIP + OBB Download Now (2.1.0 LATEST) (Year 2014)**  
   <a href="https://www.mediafire.com/file/p281pfhcgdipw8n/Fruit_Ninja_Ghostbusters_Mod_By_Superstrongtaner_%2528Revised%2529.zip/file" target="_blank" style="font-family: Arial, sans-serif; font-weight: bold; color: lightgreen;">Download Now</a>
 
 ### Fruit Ninja CHINESE:
+Author => Chinese Group
 - *The Chinese version of Fruit Ninja, with unique features and enhancements. Released in 2016 (Version 3.55.0).*  
 - **APK | Download Now (3.55.0 LATEST) (Year 2016)**  
   <a href="https://www.mediafire.com/file/gqi330uzno5ka0d/Fruit_Ninja_Chinese_%2528Revised%2529.apk/file" target="_blank" style="font-family: Arial, sans-serif; font-weight: bold; color: lightgreen;">Download Now</a>
+
+### Fruit Ninja CRAZY DISCO:
+Author => SUPERSTRONGERTANER
+- *A modified version of Fruit Ninja featuring Disco-themed graphics and ultimate 5th Anniversary gameplay mechanics. Released in 2015 (Version 2.3.2).*  
+- **Not Availatble Yet :(**
+
+### Fruit Ninja EXTREME I/II/III/IV/V/GHOSTBUSTER/DISCO BY SUPERSTRONGERTANER
+Fruit Ninja EXTREME V1:
+Author => SUPERSTRONGERTANER
+- *A modified version of Fruit Ninja featuring Disco-themed graphics and ultimate 5th Anniversary gameplay mechanics. Released in 2015 (Version 2.3.2).*  
+- **Not Availatble Yet :(**
 
 ## Q&A Session
 If there’s anything that needs to be added, like modded content or other features, contact me through my business email with a valid link and the exact date when the original version was publicly released.  
