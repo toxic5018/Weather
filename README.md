@@ -11,11 +11,15 @@
     <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightblue; border: none; cursor: pointer;">Click to View What's New</button>
   </div>
 
-  <!-- Right Side: Social Tabs -->
-  <div style="width: 30%; text-align: right;">
-    **Follow Me On**:  
-    [YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018)
-  </div>
+</div>
+
+<!-- Social Media Links Below -->
+<div style="width: 100%; text-align: center; padding-top: 10px;">
+  **Follow Me On**:  
+  [YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | 
+  [TikTok](https://www.tiktok.com/@toxic5018yt) | 
+  [Discord](https://discord.gg/5PQ68Sgqav) | 
+  [Twitch](https://www.twitch.tv/toxic5018)
 </div>
 
 ---
@@ -75,15 +79,19 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 <script>
   const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
   const body = document.body;
+  const modal = document.getElementById('whatsNewModal');
+  const modalContent = document.querySelector('.modal-content');
 
   // Function to update the background based on the system theme
   function updateTheme() {
     if (prefersDarkScheme.matches) {
       body.style.backgroundColor = "#121212"; // Dark background
       body.style.color = "#fff"; // Light text color
+      modalContent.style.backgroundColor = "#333"; // Dark modal background
     } else {
       body.style.backgroundColor = "#ffffff"; // Light background
       body.style.color = "#000"; // Dark text color
+      modalContent.style.backgroundColor = "#fefefe"; // Light modal background
     }
   }
 
@@ -123,7 +131,6 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -157,8 +164,9 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     <ul>
       <li>Improved gameplay mechanics</li>
       <li>New Ghostbusters theme</li>
-      <li>Bug fixes for better performance</li>
-      <li>Updated features for smoother experience</li>
+      <li>Enhanced user interface</li>
+      <li>Bug fixes</li>
     </ul>
   </div>
 </div>
+
