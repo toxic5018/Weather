@@ -14,7 +14,9 @@
 </div>
 
 <!-- Social Media Links Below -->
-[YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018)
+[YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018) | [Scratch](https://scratch.mit.edu/users/JavaStudiosGaming/) | [PenguinMod](https://penguinmod.com/profile?user=toxic5018)
+
+**[Download Fruit Ninja Penguin Edition (Fanmade by Me) 1.0.0](https://mega.nz/folder/GBR0AD4J#7HcBLT7u5hLOoNW_5PrZ3Q)**
 
 ---
 
