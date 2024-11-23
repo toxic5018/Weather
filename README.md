@@ -68,182 +68,63 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
 © [2024] Toxic Studios. **Do Not Distribute!!**
 
-<!-- AdSense Script for Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2851265996786440" crossorigin="anonymous"></script>
-<!-- ad_display0 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2851265996786440"
-     data-ad-slot="8926450639"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+---
 
-<!-- Theme Script: Detect System Theme (Dark/Light Mode) -->
-<script>
-  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-  const body = document.body;
-  const modal = document.getElementById('whatsNewModal');
-  const modalContent = document.querySelector('.modal-content');
+### Firebase Integration for Login and Registration
 
-  // Function to update the background based on the system theme
-  function updateTheme() {
-    if (prefersDarkScheme.matches) {
-      body.style.backgroundColor = "#121212"; // Dark background
-      body.style.color = "#fff"; // Light text color
-      modalContent.style.backgroundColor = "#333"; // Dark modal background
-    } else {
-      body.style.backgroundColor = "#ffffff"; // Light background
-      body.style.color = "#000"; // Dark text color
-      modalContent.style.backgroundColor = "#fefefe"; // Light modal background
-    }
+**Firebase Authentication** is now integrated into the website for managing user login and registration. Below are the changes added to the website:
+
+```html
+<!-- Add Firebase Initialization and Authentication Scripts -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+  
+  // Firebase configuration object
+  const firebaseConfig = {
+    apiKey: "AIzaSyAhg1frF8MCqWDUELGhogsSwIeQ0GB2gOw",
+    authDomain: "toxicstudios-128d1.firebaseapp.com",
+    projectId: "toxicstudios-128d1",
+    storageBucket: "toxicstudios-128d1.firebasestorage.app",
+    messagingSenderId: "253720176764",
+    appId: "1:253720176764:web:aa5ca44a6aafcaa4f001f9",
+    measurementId: "G-XQ24EWCB3V"
+  };
+
+  // Initialize Firebase app and auth
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Register user function
+  function registerUser(email, password) {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log('User registered:', userCredential.user);
+      })
+      .catch((error) => {
+        console.error('Error during registration:', error.message);
+      });
   }
 
-  // Apply the theme on page load
-  updateTheme();
-
-  // Listen for changes in system theme preference
-  prefersDarkScheme.addEventListener("change", updateTheme);
-</script>
-
-<!-- Font Link for 'Sen' -->
-<link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;600&display=swap" rel="stylesheet">
-
-<!-- CSS Style for Sen Font -->
-<style>
-  body {
-    font-family: 'Sen', sans-serif;
+  // Login user function
+  function loginUser(email, password) {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log('User logged in:', userCredential.user);
+      })
+      .catch((error) => {
+        console.error('Error during login:', error.message);
+      });
   }
 
-  /* Apply Arial font to download links */
-  a {
-    font-family: Arial, sans-serif;
-  }
-
-  /* Modal Style */
-  #whatsNewModal, #loginModal, #registerModal, #redirectModal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
-  }
-
-  /* Modal Content */
-  .modal-content {
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    background-color: lightgray;
-    color: black;
-  }
-
-  /* Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  /* Toast Notification Style */
-  .toast {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: lightgray;
-    color: black;
-    padding: 10px;
-    border-radius: 5px;
-    display: none;
-  }
-</style>
-
-<!-- Modal for What's New -->
-<div id="whatsNewModal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
-    <h2>What's New?</h2>
-    <p><strong>Version: 1.026</strong></p>
-    <p><strong>- Major Updates:</strong></p>
-    <ul>
-      <li>Fixed bugs in the website functionality</li>
-      <li>Minor improvements for better performance</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Modal for Login -->
-<div id="loginModal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
-    <h2>Login</h2>
-    <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; margin: 5px 0;">
-    <input type="password" id="password" placeholder="Password" style="width: 100%; padding: 10px; margin: 5px 0;">
-    <button onclick="login()" style="padding: 10px; width: 100%; background-color: lightblue; border: none;">Login</button>
-  </div>
-</div>
-
-<!-- Modal for Register -->
-<div id="registerModal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
-    <h2>Registration Page Coming Soon!</h2>
-  </div>
-</div>
-
-<!-- Modal for Redirect -->
-<div id="redirectModal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('redirectModal').style.display='none'">&times;</span>
-    <h2>You will be redirected to <span id="redirectLink"></span> in a new tab, are you sure?</h2>
-    <button onclick="continueRedirect()" style="background-color: lightgreen; padding: 10px;">Continue</button>
-    <button onclick="document.getElementById('redirectModal').style.display='none'" style="background-color: lightcoral; padding: 10px;">Cancel</button>
-  </div>
-</div>
-
-<!-- Toast Notification -->
-<div id="toast" class="toast">Login and/or Password is incorrect</div>
-
-<script>
-  function login() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    
-    if (email === 'test@example.com' && password === 'password123') {
-      alert('Login successful');
-      document.getElementById('loginModal').style.display = 'none';
-    } else {
-      const toast = document.getElementById('toast');
-      toast.style.display = 'block';
-      setTimeout(() => toast.style.display = 'none', 2500);
-    }
-  }
-
-  function continueRedirect() {
-    const link = document.getElementById('redirectLink').innerText;
-    window.open(link, '_blank');
-    document.getElementById('redirectModal').style.display = 'none';
-  }
-
-  function redirect(link) {
-    document.getElementById('redirectLink').innerText = link;
-    document.getElementById('redirectModal').style.display = 'block';
+  // Logout user function
+  function logoutUser() {
+    signOut(auth)
+      .then(() => {
+        console.log('User logged out');
+      })
+      .catch((error) => {
+        console.error('Error during logout:', error.message);
+      });
   }
 </script>
