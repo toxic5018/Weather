@@ -7,9 +7,9 @@
 
   <!-- Left Side: What's New? -->
   <div style="width: 70%;">
-    <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightblue; border: none; cursor: pointer;">What's New?</button>
-    <button onclick="document.getElementById('loginModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgreen; border: none; cursor: pointer;">Login</button>
-    <button onclick="document.getElementById('registerModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightcoral; border: none; cursor: pointer;">Register</button>
+    <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgray; border: 2px solid darkgray; cursor: pointer;">What's New?</button>
+    <button onclick="document.getElementById('loginModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgray; border: 2px solid darkgray; cursor: pointer;">Login</button>
+    <button onclick="document.getElementById('registerModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgray; border: 2px solid darkgray; cursor: pointer;">Register</button>
   </div>
 
 </div>
@@ -64,9 +64,19 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
 ---
 
-**Version 1.0.26**
+**Version 1.100**
 
-© [2024] Toxic Studios. **Do Not Distribute!!**
+### What's New in Version 1.100
+- **Features Added**:
+  - Introduced system to check password strength and encourage 60% password security.
+  - Update to modal UI for login, register, and "What's New" buttons with updated style.
+- **Bugs Fixed**:
+  - Resolved issues with button display and user interface.
+  - Minor improvements for better performance and user experience.
+
+---
+
+**Do Not Distribute!!**
 
 <!-- AdSense Script for Ads -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2851265996786440" crossorigin="anonymous"></script>
@@ -142,11 +152,10 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
-    background-color: lightgray;
-    color: black;
+    background-color: #fefefe;
   }
 
-  /* Close Button */
+  /* Modal Close Button */
   .close {
     color: #aaa;
     float: right;
@@ -161,89 +170,68 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     cursor: pointer;
   }
 
-  /* Toast Notification Style */
-  .toast {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+  /* Button Styles */
+  button {
+    font-family: Arial, sans-serif;
     background-color: lightgray;
-    color: black;
+    border: 2px solid darkgray;
     padding: 10px;
-    border-radius: 5px;
-    display: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: darkgray;
   }
 </style>
 
-<!-- Modal for What's New -->
-<div id="whatsNewModal">
+<!-- Modal Structure -->
+<!-- What's New Modal -->
+<div id="whatsNewModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
-    <h2>What's New?</h2>
-    <p><strong>Version: 1.026</strong></p>
-    <p><strong>- Major Updates:</strong></p>
+    <h2>What's New</h2>
+    <p>Version 1.100</p>
     <ul>
-      <li>Fixed bugs in the website functionality</li>
-      <li>Minor improvements for better performance</li>
+      <li>Introduced system to check password strength and encourage 60% password security.</li>
+      <li>Updated modal UI for login, register, and "What's New" buttons with new style.</li>
+      <li>Fixed bugs related to button display and user interface.</li>
     </ul>
   </div>
 </div>
 
-<!-- Modal for Login -->
-<div id="loginModal">
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
     <h2>Login</h2>
-    <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; margin: 5px 0;">
-    <input type="password" id="password" placeholder="Password" style="width: 100%; padding: 10px; margin: 5px 0;">
-    <button onclick="login()" style="padding: 10px; width: 100%; background-color: lightblue; border: none;">Login</button>
+    <form action="/login" method="post">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+      <button type="submit">Login</button>
+    </form>
   </div>
 </div>
 
-<!-- Modal for Register -->
-<div id="registerModal">
+<!-- Register Modal -->
+<div id="registerModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
-    <h2>Registration Page Coming Soon!</h2>
+    <h2>Register</h2>
+    <form action="/register" method="post">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+      <button type="submit">Register</button>
+    </form>
   </div>
 </div>
-
-<!-- Modal for Redirect -->
-<div id="redirectModal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('redirectModal').style.display='none'">&times;</span>
-    <h2>You will be redirected to <span id="redirectLink"></span> in a new tab, are you sure?</h2>
-    <button onclick="continueRedirect()" style="background-color: lightgreen; padding: 10px;">Continue</button>
-    <button onclick="document.getElementById('redirectModal').style.display='none'" style="background-color: lightcoral; padding: 10px;">Cancel</button>
-  </div>
-</div>
-
-<!-- Toast Notification -->
-<div id="toast" class="toast">Login and/or Password is incorrect</div>
-
-<script>
-  function login() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    
-    if (email === 'test@example.com' && password === 'password123') {
-      alert('Login successful');
-      document.getElementById('loginModal').style.display = 'none';
-    } else {
-      const toast = document.getElementById('toast');
-      toast.style.display = 'block';
-      setTimeout(() => toast.style.display = 'none', 2500);
-    }
-  }
-
-  function continueRedirect() {
-    const link = document.getElementById('redirectLink').innerText;
-    window.open(link, '_blank');
-    document.getElementById('redirectModal').style.display = 'none';
-  }
-
-  function redirect(link) {
-    document.getElementById('redirectLink').innerText = link;
-    document.getElementById('redirectModal').style.display = 'block';
-  }
-</script>
