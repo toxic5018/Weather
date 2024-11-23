@@ -63,7 +63,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
 ---
 
-**Version 1.0.0**
+**Version 1.0.26**
 
 © [2024] Toxic Studios. **Do Not Distribute!!**
 
@@ -164,13 +164,13 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
   <div class="modal-content">
     <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
     <h2>What's New?</h2>
-    <p><strong>Version: 1.0.0</strong></p>
+    <p><strong>Version: 1.026</strong></p>
     <p><strong>- Major Updates:</strong></p>
     <ul>
-      <li>Added new social media links</li>
-      <li>Introduced dark/light mode for better user experience</li>
-      <li>Improved UI for better accessibility</li>
+      <li>Fixed bugs in the website functionality</li>
+      <li>Minor improvements for better performance</li>
     </ul>
   </div>
 </div>
+
 
