@@ -183,13 +183,64 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
   }
 </style>
 
+<!-- Modal HTML Content -->
+<div id="whatsNewModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
+      <h2>What's New?</h2>
+    </div>
+    <div class="modal-body">
+      <p>Here's what's new in our latest update!</p>
+    </div>
+    <div class="modal-footer">
+      <button onclick="document.getElementById('whatsNewModal').style.display='none'">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
+      <h2>Login</h2>
+    </div>
+    <div class="modal-body">
+      <input type="email" id="loginEmail" placeholder="Email">
+      <input type="password" id="loginPassword" placeholder="Password">
+      <button onclick="loginUser(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value)">Login</button>
+    </div>
+    <div class="modal-footer">
+      <button onclick="document.getElementById('loginModal').style.display='none'">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
+      <h2>Register</h2>
+    </div>
+    <div class="modal-body">
+      <input type="email" id="registerEmail" placeholder="Email">
+      <input type="password" id="registerPassword" placeholder="Password">
+      <button onclick="registerUser(document.getElementById('registerEmail').value, document.getElementById('registerPassword').value)">Register</button>
+    </div>
+    <div class="modal-footer">
+      <button onclick="document.getElementById('registerModal').style.display='none'">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase Script -->
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-  // Your web app's Firebase configuration
+  // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyAhg1frF8MCqWDUELGhogsSwIeQ0GB2gOw",
     authDomain: "toxicstudios-128d1.firebaseapp.com",
@@ -204,34 +255,32 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 
-  // Get the Auth instance
+  // Get Auth instance
   const auth = getAuth(app);
 
-  // Register user function
+  // Register function
   function registerUser(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('User registered:', user);
+        console.log('User registered:', userCredential.user);
       })
       .catch((error) => {
         console.error('Error during registration:', error.message);
       });
   }
 
-  // Login user function
+  // Login function
   function loginUser(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('User logged in:', user);
+        console.log('User logged in:', userCredential.user);
       })
       .catch((error) => {
         console.error('Error during login:', error.message);
       });
   }
 
-  // Logout user function
+  // Logout function
   function logoutUser() {
     signOut(auth)
       .then(() => {
@@ -241,5 +290,4 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
         console.error('Error during logout:', error.message);
       });
   }
-
 </script>
