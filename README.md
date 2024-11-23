@@ -137,13 +137,13 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
   /* Modal Content */
   .modal-content {
+    background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
-    background-color: lightgray;
-    color: black;
+    border-radius: 10px;
   }
 
   /* Close Button */
@@ -180,6 +180,13 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+  }
+
+  /* Password strength message */
+  .password-strength {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
   }
 </style>
 
@@ -223,9 +230,11 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
       <h2>Register</h2>
     </div>
     <div class="modal-body">
+      <input type="text" id="registerUsername" placeholder="Username">
       <input type="email" id="registerEmail" placeholder="Email">
-      <input type="password" id="registerPassword" placeholder="Password">
-      <button onclick="registerUser(document.getElementById('registerEmail').value, document.getElementById('registerPassword').value)">Register</button>
+      <input type="password" id="registerPassword" placeholder="Password" oninput="checkPasswordStrength()">
+      <div id="passwordStrengthMessage" class="password-strength"></div>
+      <button onclick="registerUser(document.getElementById('registerUsername').value, document.getElementById('registerEmail').value, document.getElementById('registerPassword').value)">Register</button>
     </div>
     <div class="modal-footer">
       <button onclick="document.getElementById('registerModal').style.display='none'">Close</button>
@@ -235,12 +244,10 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
 <!-- Firebase Script -->
 <script type="module">
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-  // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyAhg1frF8MCqWDUELGhogsSwIeQ0GB2gOw",
     authDomain: "toxicstudios-128d1.firebaseapp.com",
@@ -251,15 +258,35 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     measurementId: "G-XQ24EWCB3V"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 
-  // Get Auth instance
   const auth = getAuth(app);
 
-  // Register function
-  function registerUser(email, password) {
+  function checkPasswordStrength() {
+    const password = document.getElementById('registerPassword').value;
+    const strengthMessage = document.getElementById('passwordStrengthMessage');
+
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/\d/.test(password)) strength++;
+    if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+    if (strength === 0) {
+      strengthMessage.textContent = "Password is too weak.";
+      strengthMessage.style.color = "red";
+    } else if (strength <= 2) {
+      strengthMessage.textContent = "Password is weak.";
+      strengthMessage.style.color = "orange";
+    } else {
+      strengthMessage.textContent = "Password is strong.";
+      strengthMessage.style.color = "green";
+    }
+  }
+
+  function registerUser(username, email, password) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log('User registered:', userCredential.user);
@@ -269,7 +296,6 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
       });
   }
 
-  // Login function
   function loginUser(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -280,7 +306,6 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
       });
   }
 
-  // Logout function
   function logoutUser() {
     signOut(auth)
       .then(() => {
