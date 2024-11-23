@@ -160,90 +160,30 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     text-decoration: none;
     cursor: pointer;
   }
-
-  /* Toast Notification Style */
-  .toast {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: lightgray;
-    color: black;
-    padding: 10px;
-    border-radius: 5px;
-    display: none;
-  }
 </style>
 
-<!-- Modal for What's New -->
-<div id="whatsNewModal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
-    <h2>What's New?</h2>
-    <p><strong>Version: 1.026</strong></p>
-    <p><strong>- Major Updates:</strong></p>
-    <ul>
-      <li>Fixed bugs in the website functionality</li>
-      <li>Minor improvements for better performance</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Modal for Login -->
-<div id="loginModal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
-    <h2>Login</h2>
-    <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; margin: 5px 0;">
-    <input type="password" id="password" placeholder="Password" style="width: 100%; padding: 10px; margin: 5px 0;">
-    <button onclick="login()" style="padding: 10px; width: 100%; background-color: lightblue; border: none;">Login</button>
-  </div>
-</div>
-
-<!-- Modal for Register -->
-<div id="registerModal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
-    <h2>Registration Page Coming Soon!</h2>
-  </div>
-</div>
-
-<!-- Modal for Redirect -->
-<div id="redirectModal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('redirectModal').style.display='none'">&times;</span>
-    <h2>You will be redirected to <span id="redirectLink"></span> in a new tab, are you sure?</h2>
-    <button onclick="continueRedirect()" style="background-color: lightgreen; padding: 10px;">Continue</button>
-    <button onclick="document.getElementById('redirectModal').style.display='none'" style="background-color: lightcoral; padding: 10px;">Cancel</button>
-  </div>
-</div>
-
-<!-- Toast Notification -->
-<div id="toast" class="toast">Login and/or Password is incorrect</div>
-
+<!-- Modal Scripts -->
 <script>
-  function login() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    
-    if (email === 'test@example.com' && password === 'password123') {
-      alert('Login successful');
-      document.getElementById('loginModal').style.display = 'none';
-    } else {
-      const toast = document.getElementById('toast');
-      toast.style.display = 'block';
-      setTimeout(() => toast.style.display = 'none', 2500);
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+  }
+
+  // Display modal when clicking 'What's New?' button
+  document.getElementById('whatsNewModal').addEventListener('click', function(event) {
+    if (event.target == document.getElementById('whatsNewModal')) {
+      closeModal('whatsNewModal');
     }
-  }
+  });
 
-  function continueRedirect() {
-    const link = document.getElementById('redirectLink').innerText;
-    window.open(link, '_blank');
-    document.getElementById('redirectModal').style.display = 'none';
-  }
-
-  function redirect(link) {
-    document.getElementById('redirectLink').innerText = link;
-    document.getElementById('redirectModal').style.display = 'block';
-  }
+  // Modal open and close for Login and Register
+  document.getElementById('loginModal').addEventListener('click', function(event) {
+    if (event.target == document.getElementById('loginModal')) {
+      closeModal('loginModal');
+    }
+  });
+  document.getElementById('registerModal').addEventListener('click', function(event) {
+    if (event.target == document.getElementById('registerModal')) {
+      closeModal('registerModal');
+    }
+  });
 </script>
