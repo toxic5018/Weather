@@ -287,31 +287,34 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     }
   }
 
-// Register Function with Password Validation
-function register() {
-  const username = document.getElementById('username').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+// Registration Function
+  function register() {
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-  if (password.length >= 10) {
-    // Proceed with Firebase registration if password is valid
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Registered successfully
-        const user = userCredential.user;
-        alert('Registration successful! Welcome, ' + username);
-        document.getElementById('registerModal').style.display = 'none';
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert('Error: ' + errorMessage);
-      });
-  } else {
-    // Show error toast if password is too short
-    showToast('Password must be at least 10 characters long');
+    // Ensure password is at least 10 characters
+    if (password.length >= 10) {
+      if (username && email && password) {
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Registered successfully
+            const user = userCredential.user;
+            alert('Registration successful! Welcome, ' + username);
+            document.getElementById('registerModal').style.display = 'none';
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert('Error: ' + errorMessage);
+          });
+      } else {
+        alert('Please ensure all fields are filled');
+      }
+    } else {
+      alert('Password must be at least 10 characters long');
+    }
   }
-}
   
   function continueRedirect() {
     const link = document.getElementById('redirectLink').innerText;
