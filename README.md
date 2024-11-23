@@ -143,12 +143,13 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
   /* Modal Content */
   .modal-content {
+    background-color: #fff;
     margin: 5% auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 4px;
+    border: 1px solid #888;
     width: 80%;
     max-width: 500px;
+    border-radius: 4px;
   }
 
   /* Close Button */
