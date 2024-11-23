@@ -287,17 +287,29 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     }
   }
 
+// Register Function with Password Validation
 function register() {
   const username = document.getElementById('username').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  if (username && email && password.length >= 10) {
-    // Proceed with Firebase registration
-    alert('Registration successful');
-    document.getElementById('registerModal').style.display = 'none';
+  if (password.length >= 10) {
+    // Proceed with Firebase registration if password is valid
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Registered successfully
+        const user = userCredential.user;
+        alert('Registration successful! Welcome, ' + username);
+        document.getElementById('registerModal').style.display = 'none';
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert('Error: ' + errorMessage);
+      });
   } else {
-    alert('Please ensure all fields are filled and the password is at least 10 characters long');
+    // Show error toast if password is too short
+    showToast('Password must be at least 10 characters long');
   }
 }
   
