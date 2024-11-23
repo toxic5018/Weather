@@ -160,30 +160,155 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     text-decoration: none;
     cursor: pointer;
   }
+
+  /* Toast Notification Style */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: lightgray;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+  }
 </style>
 
-<!-- Modal Scripts -->
+<!-- Modal for What's New -->
+<div id="whatsNewModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
+    <h2>What's New?</h2>
+    <p><strong>Version: 1.026</strong></p>
+    <p><strong>- Major Updates:</strong></p>
+    <ul>
+      <li>Fixed bugs in the website functionality</li>
+      <li>Minor improvements for better performance</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Modal for Login -->
+<div id="loginModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <input type="password" id="password" placeholder="Password" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <button onclick="login()" style="padding: 10px; width: 100%; background-color: lightblue; border: none;">Login</button>
+  </div>
+</div>
+
+<!-- Modal for Register -->
+<div id="registerModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
+    <h2>Registration Page</h2>
+    <input type="text" id="username" placeholder="Username" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <input type="password" id="password" placeholder="Password (Min 10 characters)" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <button onclick="register()" style="padding: 10px; width: 100%; background-color: lightblue; border: none;">Register</button>
+  </div>
+</div>
+
+<!-- Modal for Redirect -->
+<div id="redirectModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('redirectModal').style.display='none'">&times;</span>
+    <h2>You will be redirected to <span id="redirectLink"></span> in a new tab, are you sure?</h2>
+    <button onclick="continueRedirect()" style="background-color: lightgreen; padding: 10px;">Continue</button>
+    <button onclick="document.getElementById('redirectModal').style.display='none'" style="background-color: lightcoral; padding: 10px;">Cancel</button>
+  </div>
+</div>
+
+<script type="module">
+  // Import the functions you need from the Firebase SDK
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+
+  // Firebase Configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAhg1frF8MCqWDUELGhogsSwIeQ0GB2gOw",
+    authDomain: "toxicstudios-128d1.firebaseapp.com",
+    projectId: "toxicstudios-128d1",
+    storageBucket: "toxicstudios-128d1.firebasestorage.app",
+    messagingSenderId: "253720176764",
+    appId: "1:253720176764:web:aa5ca44a6aafcaa4f001f9",
+    measurementId: "G-XQ24EWCB3V"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const analytics = getAnalytics(app);
+
+  // Registration Function
+  function register() {
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    if (username && email && password.length >= 10) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Registered successfully
+          const user = userCredential.user;
+          alert('Registration successful! Welcome, ' + username);
+          document.getElementById('registerModal').style.display = 'none';
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert('Error: ' + errorMessage);
+        });
+    } else {
+      alert('Please ensure all fields are filled and the password is at least 10 characters long');
+    }
+  }
+</script>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast">Login and/or Password is incorrect</div>
+
 <script>
-  function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
+  function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    if (email === 'test@example.com' && password === 'password123') {
+      alert('Login successful');
+      document.getElementById('loginModal').style.display = 'none';
+    } else {
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 2500);
+    }
   }
 
-  // Display modal when clicking 'What's New?' button
-  document.getElementById('whatsNewModal').addEventListener('click', function(event) {
-    if (event.target == document.getElementById('whatsNewModal')) {
-      closeModal('whatsNewModal');
-    }
-  });
+function register() {
+  const username = document.getElementById('username').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
-  // Modal open and close for Login and Register
-  document.getElementById('loginModal').addEventListener('click', function(event) {
-    if (event.target == document.getElementById('loginModal')) {
-      closeModal('loginModal');
-    }
-  });
-  document.getElementById('registerModal').addEventListener('click', function(event) {
-    if (event.target == document.getElementById('registerModal')) {
-      closeModal('registerModal');
-    }
-  });
+  if (username && email && password.length >= 10) {
+    // Proceed with Firebase registration
+    alert('Registration successful');
+    document.getElementById('registerModal').style.display = 'none';
+  } else {
+    alert('Please ensure all fields are filled and the password is at least 10 characters long');
+  }
+}
+  
+  function continueRedirect() {
+    const link = document.getElementById('redirectLink').innerText;
+    window.open(link, '_blank');
+    document.getElementById('redirectModal').style.display = 'none';
+  }
+
+  function redirect(link) {
+    document.getElementById('redirectLink').innerText = link;
+    document.getElementById('redirectModal').style.display = 'block';
+  }
 </script>
