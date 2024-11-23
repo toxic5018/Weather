@@ -16,7 +16,7 @@
 <!-- Social Media Links Below -->
 [YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018) | [Scratch](https://scratch.mit.edu/users/JavaStudiosGaming/) | [PenguinMod](https://penguinmod.com/profile?user=toxic5018)
 
-**[ToxicARC (Games) (Beta)]([https://fusion-studios.itch.io/])**
+**[ToxicARC (Games) (Beta)](https://fusion-studios.itch.io/)**
 
 ---
 
