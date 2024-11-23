@@ -137,13 +137,13 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
-    border-radius: 10px;
+    background-color: lightgray;
+    color: black;
   }
 
   /* Close Button */
@@ -161,158 +161,89 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     cursor: pointer;
   }
 
-  /* Modal Header */
-  .modal-header {
-    padding: 15px;
-    background-color: #5cb85c;
-    color: white;
-  }
-
-  /* Modal Footer */
-  .modal-footer {
+  /* Toast Notification Style */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: lightgray;
+    color: black;
     padding: 10px;
-    background-color: #f1f1f1;
-  }
-
-  /* Register/Login Button Styling */
-  button {
-    margin: 5px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-
-  /* Password strength message */
-  .password-strength {
-    color: red;
-    font-size: 14px;
-    font-weight: bold;
+    border-radius: 5px;
+    display: none;
   }
 </style>
 
-<!-- Modal HTML Content -->
-<div id="whatsNewModal" class="modal">
+<!-- Modal for What's New -->
+<div id="whatsNewModal">
   <div class="modal-content">
-    <div class="modal-header">
-      <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
-      <h2>What's New?</h2>
-    </div>
-    <div class="modal-body">
-      <p>Here's what's new in our latest update!</p>
-    </div>
-    <div class="modal-footer">
-      <button onclick="document.getElementById('whatsNewModal').style.display='none'">Close</button>
-    </div>
+    <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
+    <h2>What's New?</h2>
+    <p><strong>Version: 1.026</strong></p>
+    <p><strong>- Major Updates:</strong></p>
+    <ul>
+      <li>Fixed bugs in the website functionality</li>
+      <li>Minor improvements for better performance</li>
+    </ul>
   </div>
 </div>
 
-<div id="loginModal" class="modal">
+<!-- Modal for Login -->
+<div id="loginModal">
   <div class="modal-content">
-    <div class="modal-header">
-      <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
-      <h2>Login</h2>
-    </div>
-    <div class="modal-body">
-      <input type="email" id="loginEmail" placeholder="Email">
-      <input type="password" id="loginPassword" placeholder="Password">
-      <button onclick="loginUser(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value)">Login</button>
-    </div>
-    <div class="modal-footer">
-      <button onclick="document.getElementById('loginModal').style.display='none'">Close</button>
-    </div>
+    <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <input type="password" id="password" placeholder="Password" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <button onclick="login()" style="padding: 10px; width: 100%; background-color: lightblue; border: none;">Login</button>
   </div>
 </div>
 
-<div id="registerModal" class="modal">
+<!-- Modal for Register -->
+<div id="registerModal">
   <div class="modal-content">
-    <div class="modal-header">
-      <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
-      <h2>Register</h2>
-    </div>
-    <div class="modal-body">
-      <input type="text" id="registerUsername" placeholder="Username">
-      <input type="email" id="registerEmail" placeholder="Email">
-      <input type="password" id="registerPassword" placeholder="Password" oninput="checkPasswordStrength()">
-      <div id="passwordStrengthMessage" class="password-strength"></div>
-      <button onclick="registerUser(document.getElementById('registerUsername').value, document.getElementById('registerEmail').value, document.getElementById('registerPassword').value)">Register</button>
-    </div>
-    <div class="modal-footer">
-      <button onclick="document.getElementById('registerModal').style.display='none'">Close</button>
-    </div>
+    <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
+    <h2>Registration Page Coming Soon!</h2>
   </div>
 </div>
 
-<!-- Firebase Script -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+<!-- Modal for Redirect -->
+<div id="redirectModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('redirectModal').style.display='none'">&times;</span>
+    <h2>You will be redirected to <span id="redirectLink"></span> in a new tab, are you sure?</h2>
+    <button onclick="continueRedirect()" style="background-color: lightgreen; padding: 10px;">Continue</button>
+    <button onclick="document.getElementById('redirectModal').style.display='none'" style="background-color: lightcoral; padding: 10px;">Cancel</button>
+  </div>
+</div>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAhg1frF8MCqWDUELGhogsSwIeQ0GB2gOw",
-    authDomain: "toxicstudios-128d1.firebaseapp.com",
-    projectId: "toxicstudios-128d1",
-    storageBucket: "toxicstudios-128d1.firebasestorage.app",
-    messagingSenderId: "253720176764",
-    appId: "1:253720176764:web:aa5ca44a6aafcaa4f001f9",
-    measurementId: "G-XQ24EWCB3V"
-  };
+<!-- Toast Notification -->
+<div id="toast" class="toast">Login and/or Password is incorrect</div>
 
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-
-  const auth = getAuth(app);
-
-  function checkPasswordStrength() {
-    const password = document.getElementById('registerPassword').value;
-    const strengthMessage = document.getElementById('passwordStrengthMessage');
-
-    let strength = 0;
-    if (password.length >= 8) strength++;
-    if (/[a-z]/.test(password)) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/\d/.test(password)) strength++;
-    if (/[^a-zA-Z0-9]/.test(password)) strength++;
-
-    if (strength === 0) {
-      strengthMessage.textContent = "Password is too weak.";
-      strengthMessage.style.color = "red";
-    } else if (strength <= 2) {
-      strengthMessage.textContent = "Password is weak.";
-      strengthMessage.style.color = "orange";
+<script>
+  function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    if (email === 'test@example.com' && password === 'password123') {
+      alert('Login successful');
+      document.getElementById('loginModal').style.display = 'none';
     } else {
-      strengthMessage.textContent = "Password is strong.";
-      strengthMessage.style.color = "green";
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 2500);
     }
   }
 
-  function registerUser(username, email, password) {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log('User registered:', userCredential.user);
-      })
-      .catch((error) => {
-        console.error('Error during registration:', error.message);
-      });
+  function continueRedirect() {
+    const link = document.getElementById('redirectLink').innerText;
+    window.open(link, '_blank');
+    document.getElementById('redirectModal').style.display = 'none';
   }
 
-  function loginUser(email, password) {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log('User logged in:', userCredential.user);
-      })
-      .catch((error) => {
-        console.error('Error during login:', error.message);
-      });
-  }
-
-  function logoutUser() {
-    signOut(auth)
-      .then(() => {
-        console.log('User logged out');
-      })
-      .catch((error) => {
-        console.error('Error during logout:', error.message);
-      });
+  function redirect(link) {
+    document.getElementById('redirectLink').innerText = link;
+    document.getElementById('redirectModal').style.display = 'block';
   }
 </script>
