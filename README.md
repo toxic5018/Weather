@@ -21,6 +21,21 @@
 
 ---
 
+## What's New? (Version 1.100)
+
+<div style="text-align: center;">
+  <h3>Check Out The Newest Update!</h3>
+  <p><strong>Version 1.100:</strong></p>
+  <ul>
+    <li>Fixed login modal bug</li>
+    <li>Improved performance for faster loading</li>
+    <li>Added password strength checker on registration</li>
+    <li>Updated the layout of the buttons to be more user-friendly</li>
+    <li>Minor UI improvements</li>
+    <li>Better error handling for invalid login attempts</li>
+  </ul>
+</div>
+
 ## Recent YouTube Video
 <div style="text-align: center;">
   <h3>Check Out My Recent Video</h3>
@@ -65,12 +80,6 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 ---
 
 **Version 1.100**
-
-### :features-added:
-- **Login and Register UI updates** with username, email, and password fields.
-- **Password Strength Checker** added for enhanced security.
-- **Dark/Light Mode Support** (auto-detection based on system theme).
-- **Improved Bug Fixes** and performance updates.
 
 © [2024] Toxic Studios. **Do Not Distribute!!**
 
@@ -129,7 +138,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
   }
 
   /* Modal Style */
-  #whatsNewModal, #loginModal, #registerModal, #redirectModal {
+  #whatsNewModal, #loginModal, #registerModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -137,22 +146,26 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Modal background */
     padding-top: 60px;
   }
 
   /* Modal Content */
   .modal-content {
-    background-color: #fff;
+    background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 500px;
-    border-radius: 4px;
+    border-radius: 10px;
   }
 
-  /* Close Button */
+  .modal-content h2 {
+    font-size: 1.5em;
+  }
+
+  /* Modal Close Button */
   .close {
     color: #aaa;
     float: right;
@@ -167,52 +180,45 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     cursor: pointer;
   }
 
-  /* Password Strength Meter */
-  #password-strength-meter {
+  /* Button Styling */
+  button {
+    padding: 10px;
+    background-color: lightgray;
+    border: 1px solid darkgray;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  button:hover {
+    background-color: #ddd;
+  }
+
+  /* Password Strength Indicator */
+  .strength-indicator {
+    font-size: 14px;
+    color: #fff;
+    height: 10px;
+    background-color: lightgray;
+  }
+
+  .strength-bar {
+    height: 10px;
+  }
+
+  .strength-weak {
+    width: 33%;
+    background-color: red;
+  }
+
+  .strength-medium {
+    width: 66%;
+    background-color: yellow;
+  }
+
+  .strength-strong {
     width: 100%;
-    height: 5px;
-    background-color: #e0e0e0;
-    margin-top: 10px;
+    background-color: green;
   }
-
-  #password-strength-meter .strength {
-    height: 100%;
-    transition: width 0.5s ease-in-out;
-  }
-
-  .weak { background-color: red; }
-  .fair { background-color: orange; }
-  .good { background-color: yellow; }
-  .strong { background-color: green; }
 </style>
-
-<!-- Password Strength Checker -->
-<script>
-  function checkPasswordStrength(password) {
-    let strength = 0;
-    if (password.length >= 6) strength += 1;
-    if (password.length >= 10) strength += 1;
-    if (/[A-Z]/.test(password)) strength += 1;
-    if (/[0-9]/.test(password)) strength += 1;
-    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
-
-    const strengthMeter = document.getElementById('password-strength-meter');
-    const strengthBar = strengthMeter.querySelector('.strength');
-    if (strength === 0) {
-      strengthBar.style.width = '0%';
-      strengthBar.className = '';
-    } else if (strength === 1) {
-      strengthBar.style.width = '25%';
-      strengthBar.className = 'weak';
-    } else if (strength === 2) {
-      strengthBar.style.width = '50%';
-      strengthBar.className = 'fair';
-    } else if (strength === 3) {
-      strengthBar.style.width = '75%';
-      strengthBar.className = 'good';
-    } else if (strength === 4) {
-      strengthBar.style.width = '100%';
-      strengthBar.className = 'strong';
-    }
-  }
-</script>
