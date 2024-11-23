@@ -7,9 +7,9 @@
 
   <!-- Left Side: What's New? -->
   <div style="width: 70%;">
-    <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgray; border: 1px solid darkgray; cursor: pointer;">What's New?</button>
-    <button onclick="document.getElementById('loginModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgray; border: 1px solid darkgray; cursor: pointer;">Login</button>
-    <button onclick="document.getElementById('registerModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgray; border: 1px solid darkgray; cursor: pointer;">Register</button>
+    <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightblue; border: none; cursor: pointer;">What's New?</button>
+    <button onclick="document.getElementById('loginModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgreen; border: none; cursor: pointer;">Login</button>
+    <button onclick="document.getElementById('registerModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightcoral; border: none; cursor: pointer;">Register</button>
   </div>
 
 </div>
@@ -20,21 +20,6 @@
 **[ToxicARC (Games) (Beta)](https://fusion-studios.itch.io/)**
 
 ---
-
-## What's New? (Version 1.100)
-
-<div style="text-align: center;">
-  <h3>Check Out The Newest Update!</h3>
-  <p><strong>Version 1.100:</strong></p>
-  <ul>
-    <li>Fixed login modal bug</li>
-    <li>Improved performance for faster loading</li>
-    <li>Added password strength checker on registration</li>
-    <li>Updated the layout of the buttons to be more user-friendly</li>
-    <li>Minor UI improvements</li>
-    <li>Better error handling for invalid login attempts</li>
-  </ul>
-</div>
 
 ## Recent YouTube Video
 <div style="text-align: center;">
@@ -79,7 +64,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
 ---
 
-**Version 1.100**
+**Version 1.0.26**
 
 © [2024] Toxic Studios. **Do Not Distribute!!**
 
@@ -138,7 +123,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
   }
 
   /* Modal Style */
-  #whatsNewModal, #loginModal, #registerModal {
+  #whatsNewModal, #loginModal, #registerModal, #redirectModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -146,26 +131,22 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); /* Modal background */
+    background-color: rgba(0, 0, 0, 0.4);
     padding-top: 60px;
   }
 
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    border-radius: 10px;
+    max-width: 500px;
+    background-color: lightgray;
+    color: black;
   }
 
-  .modal-content h2 {
-    font-size: 1.5em;
-  }
-
-  /* Modal Close Button */
+  /* Close Button */
   .close {
     color: #aaa;
     float: right;
@@ -180,45 +161,89 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     cursor: pointer;
   }
 
-  /* Button Styling */
-  button {
+  /* Toast Notification Style */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: lightgray;
+    color: black;
     padding: 10px;
-    background-color: lightgray;
-    border: 1px solid darkgray;
-    cursor: pointer;
-    font-family: 'Arial', sans-serif;
     border-radius: 5px;
-    margin: 5px;
-  }
-
-  button:hover {
-    background-color: #ddd;
-  }
-
-  /* Password Strength Indicator */
-  .strength-indicator {
-    font-size: 14px;
-    color: #fff;
-    height: 10px;
-    background-color: lightgray;
-  }
-
-  .strength-bar {
-    height: 10px;
-  }
-
-  .strength-weak {
-    width: 33%;
-    background-color: red;
-  }
-
-  .strength-medium {
-    width: 66%;
-    background-color: yellow;
-  }
-
-  .strength-strong {
-    width: 100%;
-    background-color: green;
+    display: none;
   }
 </style>
+
+<!-- Modal for What's New -->
+<div id="whatsNewModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
+    <h2>What's New?</h2>
+    <p><strong>Version: 1.026</strong></p>
+    <p><strong>- Major Updates:</strong></p>
+    <ul>
+      <li>Fixed bugs in the website functionality</li>
+      <li>Minor improvements for better performance</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Modal for Login -->
+<div id="loginModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <input type="password" id="password" placeholder="Password" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <button onclick="login()" style="padding: 10px; width: 100%; background-color: lightblue; border: none;">Login</button>
+  </div>
+</div>
+
+<!-- Modal for Register -->
+<div id="registerModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
+    <h2>Registration Page Coming Soon!</h2>
+  </div>
+</div>
+
+<!-- Modal for Redirect -->
+<div id="redirectModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('redirectModal').style.display='none'">&times;</span>
+    <h2>You will be redirected to <span id="redirectLink"></span> in a new tab, are you sure?</h2>
+    <button onclick="continueRedirect()" style="background-color: lightgreen; padding: 10px;">Continue</button>
+    <button onclick="document.getElementById('redirectModal').style.display='none'" style="background-color: lightcoral; padding: 10px;">Cancel</button>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast">Login and/or Password is incorrect</div>
+
+<script>
+  function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    if (email === 'test@example.com' && password === 'password123') {
+      alert('Login successful');
+      document.getElementById('loginModal').style.display = 'none';
+    } else {
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 2500);
+    }
+  }
+
+  function continueRedirect() {
+    const link = document.getElementById('redirectLink').innerText;
+    window.open(link, '_blank');
+    document.getElementById('redirectModal').style.display = 'none';
+  }
+
+  function redirect(link) {
+    document.getElementById('redirectLink').innerText = link;
+    document.getElementById('redirectModal').style.display = 'block';
+  }
+</script>
