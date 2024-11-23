@@ -7,8 +7,9 @@
 
   <!-- Left Side: What's New? -->
   <div style="width: 70%;">
-    ### What's New?
-    <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightblue; border: none; cursor: pointer;">Click to View What's New</button>
+    <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightblue; border: none; cursor: pointer;">What's New?</button>
+    <button onclick="document.getElementById('loginModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgreen; border: none; cursor: pointer;">Login</button>
+    <button onclick="document.getElementById('registerModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightcoral; border: none; cursor: pointer;">Register</button>
   </div>
 
 </div>
@@ -122,7 +123,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
   }
 
   /* Modal Style */
-  #whatsNewModal {
+  #whatsNewModal, #loginModal, #registerModal, #redirectModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -130,7 +131,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+    background-color: rgba(0, 0, 0, 0.4);
     padding-top: 60px;
   }
 
@@ -141,6 +142,8 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
+    background-color: lightgray;
+    color: black;
   }
 
   /* Close Button */
@@ -156,6 +159,19 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  /* Toast Notification Style */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: lightgray;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
   }
 </style>
 
@@ -173,4 +189,61 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
   </div>
 </div>
 
+<!-- Modal for Login -->
+<div id="loginModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <input type="password" id="password" placeholder="Password" style="width: 100%; padding: 10px; margin: 5px 0;">
+    <button onclick="login()" style="padding: 10px; width: 100%; background-color: lightblue; border: none;">Login</button>
+  </div>
+</div>
 
+<!-- Modal for Register -->
+<div id="registerModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
+    <h2>Registration Page Coming Soon!</h2>
+  </div>
+</div>
+
+<!-- Modal for Redirect -->
+<div id="redirectModal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('redirectModal').style.display='none'">&times;</span>
+    <h2>You will be redirected to <span id="redirectLink"></span> in a new tab, are you sure?</h2>
+    <button onclick="continueRedirect()" style="background-color: lightgreen; padding: 10px;">Continue</button>
+    <button onclick="document.getElementById('redirectModal').style.display='none'" style="background-color: lightcoral; padding: 10px;">Cancel</button>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast">Login and/or Password is incorrect</div>
+
+<script>
+  function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    if (email === 'test@example.com' && password === 'password123') {
+      alert('Login successful');
+      document.getElementById('loginModal').style.display = 'none';
+    } else {
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 2500);
+    }
+  }
+
+  function continueRedirect() {
+    const link = document.getElementById('redirectLink').innerText;
+    window.open(link, '_blank');
+    document.getElementById('redirectModal').style.display = 'none';
+  }
+
+  function redirect(link) {
+    document.getElementById('redirectLink').innerText = link;
+    document.getElementById('redirectModal').style.display = 'block';
+  }
+</script>
