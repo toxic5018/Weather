@@ -15,9 +15,9 @@
 </div>
 
 <!-- Social Media Links Below -->
-[YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy) | [TikTok](https://www.tiktok.com/@toxic5018yt) | [Discord](https://discord.gg/5PQ68Sgqav) | [Twitch](https://www.twitch.tv/toxic5018) | [Scratch](https://scratch.mit.edu/users/JavaStudiosGaming/) | [PenguinMod](https://penguinmod.com/profile?user=toxic5018)
+[YouTube](https://www.youtube.com/playlist?list=PLd5gJYrm0hoCmzNHopuUjmZktYtvLd4qy){:target="_blank"} | [TikTok](https://www.tiktok.com/@toxic5018yt){:target="_blank"} | [Discord](https://discord.gg/5PQ68Sgqav){:target="_blank"} | [Twitch](https://www.twitch.tv/toxic5018){:target="_blank"} | [Scratch](https://scratch.mit.edu/users/JavaStudiosGaming/){:target="_blank"} | [PenguinMod](https://penguinmod.com/profile?user=toxic5018){:target="_blank"}
 
-**[ToxicARC (Games) (Beta)](https://fusion-studios.itch.io/)**
+**[ToxicARC (Games) (Beta)](https://fusion-studios.itch.io/){:target="_blank"}**
 
 ---
 
@@ -57,22 +57,14 @@ I may one day delete the website!!!
 ## About Me
 I'm a passionate game developer who loves experimenting with new ideas and creating engaging gameplay experiences. Check out my projects and feel free to contribute or leave feedback!
 
-[Visit My GitHub](https://github.com/toxic5018)
+[Visit My GitHub](https://github.com/toxic5018){:target="_blank"}
 
 ## Contact
-- Email: [toxicbusinessstudios@gmail.com](mailto:toxicbusinessstudios@gmail.com)
+- Email: [toxicbusinessstudios@gmail.com](mailto:toxicbusinessstudios@gmail.com){:target="_blank"}
 
 ---
 
 **Version 1.100**
-
-### What's New in Version 1.100
-- **Features Added**:
-  - Introduced system to check password strength and encourage 60% password security.
-  - Update to modal UI for login, register, and "What's New" buttons with updated style.
-- **Bugs Fixed**:
-  - Resolved issues with button display and user interface.
-  - Minor improvements for better performance and user experience.
 
 ---
 
@@ -125,6 +117,7 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 <style>
   body {
     font-family: 'Sen', sans-serif;
+    color: #000; /* Ensure text is black */
   }
 
   /* Apply Arial font to download links */
@@ -141,21 +134,19 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
   }
 
-  /* Modal Content */
   .modal-content {
-    margin: 5% auto;
+    background-color: #fefefe;
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
-    background-color: #fefefe;
+    background-color: #ffffff; /* Default light theme modal background */
   }
 
-  /* Modal Close Button */
   .close {
     color: #aaa;
     float: right;
