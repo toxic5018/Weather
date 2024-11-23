@@ -7,9 +7,9 @@
 
   <!-- Left Side: What's New? -->
   <div style="width: 70%;">
-    <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightblue; border: none; cursor: pointer;">What's New?</button>
-    <button onclick="document.getElementById('loginModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgreen; border: none; cursor: pointer;">Login</button>
-    <button onclick="document.getElementById('registerModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightcoral; border: none; cursor: pointer;">Register</button>
+    <button onclick="document.getElementById('whatsNewModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgray; border: 1px solid darkgray; cursor: pointer;">What's New?</button>
+    <button onclick="document.getElementById('loginModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgray; border: 1px solid darkgray; cursor: pointer;">Login</button>
+    <button onclick="document.getElementById('registerModal').style.display='block'" style="font-family: Arial, sans-serif; padding: 10px; background-color: lightgray; border: 1px solid darkgray; cursor: pointer;">Register</button>
   </div>
 
 </div>
@@ -64,185 +64,154 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
 ---
 
-**Version 1.100**  
-**:features-added:**
-- Added "Login" and "Register" buttons next to the "What's New?" button.
-- Renamed "Click to view What's New" to "What's New?"
-- Updated UI for Login and Register to match the What's New modal layout, with a light gray background and black Arial text.
-- For Login UI, added fields for Email and Password, and a Login button.
-- For Register UI, added message: "Registration Page Coming Soon!"
-- Added a Toast notification for incorrect login attempts (Login and/or Password is incorrect).
-- Added Redirect UI to confirm redirection to external links (e.g., downloads). Displays the link to be redirected to and asks the user if they are sure.
-- Updated the layout for all modals to ensure consistency and functionality.
+**Version 1.100**
 
----
+### :features-added:
+- **Login and Register UI updates** with username, email, and password fields.
+- **Password Strength Checker** added for enhanced security.
+- **Dark/Light Mode Support** (auto-detection based on system theme).
+- **Improved Bug Fixes** and performance updates.
 
-## Complete Code
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toxic5018 - Website</title>
+© [2024] Toxic Studios. **Do Not Distribute!!**
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAhg1frF8MCqWDUELGhogsSwIeQ0GB2gOw",
-      authDomain: "toxicstudios-128d1.firebaseapp.com",
-      projectId: "toxicstudios-128d1",
-      storageBucket: "toxicstudios-128d1.firebasestorage.app",
-      messagingSenderId: "253720176764",
-      appId: "1:253720176764:web:aa5ca44a6aafcaa4f001f9",
-      measurementId: "G-XQ24EWCB3V"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
-
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-    }
-
-    #whatsNewModal, #loginModal, #registerModal, #redirectModal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      padding-top: 60px;
-    }
-
-    .modal-content {
-      margin: 5% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 500px;
-      background-color: lightgray;
-      color: black;
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
-      opacity: 0;
-      transition: opacity 0.5s;
-      font-family: Arial, sans-serif;
-    }
-
-    .toast.show {
-      opacity: 1;
-    }
-  </style>
-</head>
-<body>
-
-<!-- Main Content -->
-<div style="text-align: center; padding: 50px;">
-  <h1>Toxic5018 - Website</h1>
-  <button onclick="document.getElementById('whatsNewModal').style.display='block'">What's New?</button>
-  <button onclick="document.getElementById('loginModal').style.display='block'">Login</button>
-  <button onclick="document.getElementById('registerModal').style.display='block'">Register</button>
-</div>
-
-<!-- What's New Modal -->
-<div id="whatsNewModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('whatsNewModal').style.display='none'">&times;</span>
-    <h2>What's New?</h2>
-    <p>We've added several exciting features to the website, including new modded games and content updates. Stay tuned for more!</p>
-  </div>
-</div>
-
-<!-- Login Modal -->
-<div id="loginModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
-    <h2>Login</h2>
-    <form onsubmit="login(event)">
-      <input type="email" id="loginEmail" placeholder="Email" required><br>
-      <input type="password" id="loginPassword" placeholder="Password" required><br>
-      <button type="submit">Login</button>
-    </form>
-  </div>
-</div>
-
-<!-- Register Modal -->
-<div id="registerModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('registerModal').style.display='none'">&times;</span>
-    <h2>Register</h2>
-    <p>Registration Page Coming Soon!</p>
-  </div>
-</div>
-
-<!-- Redirect Modal -->
-<div id="redirectModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('redirectModal').style.display='none'">&times;</span>
-    <h2>Redirecting...</h2>
-    <p id="redirectLink">You will be redirected shortly.</p>
-    <button onclick="window.location.href = redirectLink">Proceed</button>
-  </div>
-</div>
-
-<!-- Toast Notification -->
-<div id="toast" class="toast">Incorrect Login or Password!</div>
-
+<!-- AdSense Script for Ads -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2851265996786440" crossorigin="anonymous"></script>
+<!-- ad_display0 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2851265996786440"
+     data-ad-slot="8926450639"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
 <script>
-  function login(event) {
-    event.preventDefault();
-
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-
-    if (email === 'admin@toxic.com' && password === 'password123') {
-      alert("Login Successful!");
-    } else {
-      document.getElementById('toast').classList.add('show');
-      setTimeout(() => {
-        document.getElementById('toast').classList.remove('show');
-      }, 3000);
-    }
-  }
-
-  function redirectToLink(link) {
-    document.getElementById('redirectModal').style.display = 'block';
-    document.getElementById('redirectLink').innerText = `You will be redirected to: ${link}`;
-    setTimeout(() => {
-      window.location.href = link;
-    }, 3000);
-  }
+     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-</body>
-</html>
+<!-- Theme Script: Detect System Theme (Dark/Light Mode) -->
+<script>
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const body = document.body;
+  const modal = document.getElementById('whatsNewModal');
+  const modalContent = document.querySelector('.modal-content');
+
+  // Function to update the background based on the system theme
+  function updateTheme() {
+    if (prefersDarkScheme.matches) {
+      body.style.backgroundColor = "#121212"; // Dark background
+      body.style.color = "#fff"; // Light text color
+      modalContent.style.backgroundColor = "#333"; // Dark modal background
+    } else {
+      body.style.backgroundColor = "#ffffff"; // Light background
+      body.style.color = "#000"; // Dark text color
+      modalContent.style.backgroundColor = "#fefefe"; // Light modal background
+    }
+  }
+
+  // Apply the theme on page load
+  updateTheme();
+
+  // Listen for changes in system theme preference
+  prefersDarkScheme.addEventListener("change", updateTheme);
+</script>
+
+<!-- Font Link for 'Sen' -->
+<link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- CSS Style for Sen Font -->
+<style>
+  body {
+    font-family: 'Sen', sans-serif;
+  }
+
+  /* Apply Arial font to download links */
+  a {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Modal Style */
+  #whatsNewModal, #loginModal, #registerModal, #redirectModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+  }
+
+  /* Modal Content */
+  .modal-content {
+    margin: 5% auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 500px;
+  }
+
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Password Strength Meter */
+  #password-strength-meter {
+    width: 100%;
+    height: 5px;
+    background-color: #e0e0e0;
+    margin-top: 10px;
+  }
+
+  #password-strength-meter .strength {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+  }
+
+  .weak { background-color: red; }
+  .fair { background-color: orange; }
+  .good { background-color: yellow; }
+  .strong { background-color: green; }
+</style>
+
+<!-- Password Strength Checker -->
+<script>
+  function checkPasswordStrength(password) {
+    let strength = 0;
+    if (password.length >= 6) strength += 1;
+    if (password.length >= 10) strength += 1;
+    if (/[A-Z]/.test(password)) strength += 1;
+    if (/[0-9]/.test(password)) strength += 1;
+    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+
+    const strengthMeter = document.getElementById('password-strength-meter');
+    const strengthBar = strengthMeter.querySelector('.strength');
+    if (strength === 0) {
+      strengthBar.style.width = '0%';
+      strengthBar.className = '';
+    } else if (strength === 1) {
+      strengthBar.style.width = '25%';
+      strengthBar.className = 'weak';
+    } else if (strength === 2) {
+      strengthBar.style.width = '50%';
+      strengthBar.className = 'fair';
+    } else if (strength === 3) {
+      strengthBar.style.width = '75%';
+      strengthBar.className = 'good';
+    } else if (strength === 4) {
+      strengthBar.style.width = '100%';
+      strengthBar.className = 'strong';
+    }
+  }
+</script>
