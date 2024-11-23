@@ -68,19 +68,128 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
 
 © [2024] Toxic Studios. **Do Not Distribute!!**
 
----
+<!-- AdSense Script for Ads -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2851265996786440" crossorigin="anonymous"></script>
+<!-- ad_display0 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2851265996786440"
+     data-ad-slot="8926450639"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
-### Firebase Integration for Login and Registration
+<!-- Theme Script: Detect System Theme (Dark/Light Mode) -->
+<script>
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const body = document.body;
+  const modal = document.getElementById('whatsNewModal');
+  const modalContent = document.querySelector('.modal-content');
 
-**Firebase Authentication** is now integrated into the website for managing user login and registration. Below are the changes added to the website:
+  // Function to update the background based on the system theme
+  function updateTheme() {
+    if (prefersDarkScheme.matches) {
+      body.style.backgroundColor = "#121212"; // Dark background
+      body.style.color = "#fff"; // Light text color
+      modalContent.style.backgroundColor = "#333"; // Dark modal background
+    } else {
+      body.style.backgroundColor = "#ffffff"; // Light background
+      body.style.color = "#000"; // Dark text color
+      modalContent.style.backgroundColor = "#fefefe"; // Light modal background
+    }
+  }
 
-```html
-<!-- Add Firebase Initialization and Authentication Scripts -->
+  // Apply the theme on page load
+  updateTheme();
+
+  // Listen for changes in system theme preference
+  prefersDarkScheme.addEventListener("change", updateTheme);
+</script>
+
+<!-- Font Link for 'Sen' -->
+<link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- CSS Style for Sen Font -->
+<style>
+  body {
+    font-family: 'Sen', sans-serif;
+  }
+
+  /* Apply Arial font to download links */
+  a {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Modal Style */
+  #whatsNewModal, #loginModal, #registerModal, #redirectModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+  }
+
+  /* Modal Content */
+  .modal-content {
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    background-color: lightgray;
+    color: black;
+  }
+
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Modal Header */
+  .modal-header {
+    padding: 15px;
+    background-color: #5cb85c;
+    color: white;
+  }
+
+  /* Modal Footer */
+  .modal-footer {
+    padding: 10px;
+    background-color: #f1f1f1;
+  }
+
+  /* Register/Login Button Styling */
+  button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+
 <script type="module">
+  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-  
-  // Firebase configuration object
+
+  // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyAhg1frF8MCqWDUELGhogsSwIeQ0GB2gOw",
     authDomain: "toxicstudios-128d1.firebaseapp.com",
@@ -91,15 +200,19 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
     measurementId: "G-XQ24EWCB3V"
   };
 
-  // Initialize Firebase app and auth
+  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  // Get the Auth instance
   const auth = getAuth(app);
 
   // Register user function
   function registerUser(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log('User registered:', userCredential.user);
+        const user = userCredential.user;
+        console.log('User registered:', user);
       })
       .catch((error) => {
         console.error('Error during registration:', error.message);
@@ -110,7 +223,8 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
   function loginUser(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log('User logged in:', userCredential.user);
+        const user = userCredential.user;
+        console.log('User logged in:', user);
       })
       .catch((error) => {
         console.error('Error during login:', error.message);
@@ -127,4 +241,5 @@ I'm a passionate game developer who loves experimenting with new ideas and creat
         console.error('Error during logout:', error.message);
       });
   }
+
 </script>
