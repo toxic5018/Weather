@@ -1,9 +1,3 @@
-# Weather Website
-
-This is the complete HTML code for the Weather Website project. To use it, copy the code below into an HTML file.
-
-```html
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
