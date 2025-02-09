@@ -1,3 +1,8 @@
+# Weather Website
+
+This is the complete HTML code for the Weather Website project. To use it, copy the code below into an HTML file.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +102,7 @@
       margin-top: 30px;
     }
     .hourly-forecast-list {
-      width: 100%;  /* Updated to use full width */
+      width: 100%;  /* Full width */
     }
     .hourly-forecast-title {
       font-size: 1.2em;
