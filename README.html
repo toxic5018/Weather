@@ -3,1034 +3,514 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zentrix - Social Media</title>
-  <!-- Funnel Display font for special titles -->
-  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display&display=swap" rel="stylesheet" />
-  <!-- Material Icons -->
+  <title>Weather Website</title>
+  <!-- Material Icons for no WiFi icon -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <!-- Firebase Initialization (using module) -->
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyDjI46S2PGPbUsdvQfWXA0EQ6Pd9lpBRCE",
-      authDomain: "toxicstudios-6de44.firebaseapp.com",
-      projectId: "toxicstudios-6de44",
-      storageBucket: "toxicstudios-6de44.firebasestorage.app",
-      messagingSenderId: "22447277764",
-      appId: "1:22447277764:web:78aa5cba1ce2b106b6ab91",
-      measurementId: "G-E5JJV7VD5P"
-    };
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
   <style>
-    /* === GENERAL & LAYOUT STYLES === */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      user-select: none;
-      transition: background-color 0.3s, color 0.3s;
-      background-color: white;
-      color: black;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #2c3e50;
-      color: white;
-      position: relative;
-    }
-    .taskbar {
-      display: flex;
-      align-items: center;
-    }
-    .taskbar h1 {
-      margin: 0;
-      font-family: 'Funnel Display', sans-serif;
-      font-size: 32px;
-    }
-    .search-bar {
-      margin-left: 20px;
-      flex-grow: 1;
-    }
-    .search-bar input {
-      width: 100%;
-      padding: 8px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-    .icons {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      position: relative;
-    }
-    .icons i {
-      cursor: pointer;
-      font-size: 24px;
-    }
-    .sign-in {
-      background-color: #27ae60;
-      color: white;
-      font-family: 'Funnel Display', sans-serif;
-      font-size: 16px;
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      position: relative;
+      background-color: #f0f0f0;
     }
     .container {
-      display: flex;
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: #fff;
       padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    .left-panel {
-      width: 70%;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      overflow-y: auto;
-      height: 80vh;
-      background-color: #ecf0f1;
-    }
-    .right-panel {
-      width: 30%;
-      background-color: #ecf0f1;
-      padding: 15px;
-      border-radius: 5px;
-      margin-left: 20px;
-      overflow-y: auto;
-      height: 80vh;
-    }
-    /* === POST & VIEW POST BOX === */
-    .post {
-      background-color: #ecf0f1;
-      padding: 10px;
-      border-radius: 5px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.3s, border 0.3s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 2px solid transparent;
-      font-family: 'Funnel Display', sans-serif;
-    }
-    .post:hover {
-      transform: scale(1.05);
-    }
-    .post img {
-      max-width: 80%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    .post .title,
-    .post .info {
+    .weather-title {
+      font-size: 1.5em;
+      color: #888;
       text-align: left;
+      margin-bottom: 20px;
+    }
+    .search-box,
+    #fetch-location-btn,
+    #unit-dropdown,
+    #follow-me-dropdown,
+    #whatsnew-dropdown {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      border-radius: 0;
+    }
+    /* Inline dropdowns */
+    #unit-dropdown,
+    #follow-me-dropdown,
+    #whatsnew-dropdown {
+      width: auto;
+      display: inline-block;
+      margin-right: 10px;
+    }
+    #fetch-location-btn {
+      background-color: orange;
+      color: white;
+      cursor: pointer;
+    }
+    .search-results {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      background-color: white;
+      position: absolute;
+      width: 100%;
+      border-radius: 0;
+      z-index: 500;
+    }
+    .search-results div {
+      padding: 10px;
+      cursor: pointer;
+    }
+    .search-results div:hover {
+      background-color: #f0f0f0;
+    }
+    .weather-info {
+      text-align: center;
+    }
+    .weather-icon {
+      width: 100px;
+    }
+    .temp {
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .real-feel {
+      font-size: 0.9em;
+      color: #555;
+    }
+    .details {
+      margin-top: 20px;
+    }
+    .details div {
       margin: 5px 0;
     }
-    .post .title { font-weight: bold; }
-    .post .info { font-size: 14px; color: #7f8c8d; }
-    .view-post-box {
-      background-color: white;
-      padding: 15px;
-      border-radius: 5px;
-      border: 2px solid #bdc3c7;
-      margin-top: 15px;
+    .error-message {
+      color: red;
+      text-align: center;
     }
-    .view-post-box h3 {
+    .hourly-forecast {
+      margin-top: 30px;
+    }
+    .hourly-forecast-list {
+      width: 100%;  /* Updated to use full width */
+    }
+    .hourly-forecast-title {
+      font-size: 1.2em;
       font-weight: bold;
-      font-family: 'Funnel Display', sans-serif;
+      margin-bottom: 10px;
     }
-    .view-post-box .description { font-size: 14px; }
-    .view-post-box .info { color: #7f8c8d; font-size: 14px; }
-    .view-post-box .release-date { font-size: 12px; color: #95a5a6; }
-    /* === COMMENTS SECTION === */
-    .comments-box {
-      margin-top: 20px;
-      display: none;
-      background-color: #ecf0f1;
-      padding: 15px;
-      border-radius: 5px;
-      border: 2px solid #bdc3c7;
-      font-family: 'Funnel Display', sans-serif;
-      max-height: 300px;
-      overflow-y: auto;
-    }
-    .comments-box h3 { font-family: 'Funnel Display', sans-serif; }
-    #comment-list { max-height: 200px; overflow-y: auto; }
-    .comment-item {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      border-bottom: 1px solid #bdc3c7;
-    }
-    .comment-item .icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-      overflow: hidden;
-    }
-    .comment-item .icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .comment-item .comment-info { flex-grow: 1; }
-    .comment-item .date { font-size: 12px; color: #95a5a6; }
-    .comment-item .username,
-    .comment-item .comment-name { font-weight: bold; }
-    .comments-count {
-      font-size: 16px;
-      font-family: 'Funnel Display', sans-serif;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    /* === MORE SECTION BUTTONS === */
-    .more-section {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .more-section button {
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      font-family: 'Funnel Display', sans-serif;
-    }
-    .more-section .comment-btn { background-color: lightblue; }
-    .more-section .share-btn { background-color: #27ae60; color: white; }
-    .more-section .report-btn { background-color: lightcoral; }
-    .more-section .mark-btn { background-color: lightcoral; }
-    /* === NEW COMMENT FORM === */
-    .new-comment-form {
-      margin-top: 10px;
-      padding: 10px;
-      border: 1px solid #bdc3c7;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .new-comment-form label { font-weight: bold; }
-    .new-comment-form textarea {
-      width: 100%;
-      height: 60px;
-      resize: none;
-      padding: 5px;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .new-comment-form .char-count {
-      font-size: 12px;
-      color: #555;
-      text-align: right;
-    }
-    .new-comment-form .buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: flex-end;
-    }
-    .new-comment-form button.create-btn {
-      padding: 5px 10px;
-      background-color: #27ae60;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .new-comment-form button.discard-btn {
-      padding: 5px 10px;
-      background-color: #e57373;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    /* === SHARE PANEL === */
-    .share-panel {
-      margin-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .share-panel button {
-      padding: 8px;
-      background-color: #a5d6a7;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    /* === "SHOW MORE" TOGGLE TEXT === */
-    #show-more {
-      color: blue;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    /* === DROPDOWNS (for settings, sign in, info) === */
-    .dropdown {
-      position: absolute;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 10px;
-      box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
-      z-index: 1000;
-      display: none;
-    }
-    .dropdown button {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 5px;
-      text-align: left;
-      cursor: pointer;
-    }
-    /* === MODAL STYLES (for Changelog, Login, Register, Access Prompt) === */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2000;
-      display: none;
-      flex-direction: column;
-      background-color: white; /* Explicit background */
-      color: black;
-    }
-    .modal-header {
+    .hourly-item {
       display: flex;
       justify-content: space-between;
+      padding: 10px 0;
+      border-top: 1px solid #ccc;
+    }
+    .hourly-item:first-child {
+      border-top: none;
+    }
+    .hourly-item div {
+      display: inline-block;
+    }
+    .hourly-item .hour-time {
+      width: 30%;
+    }
+    .hourly-item .hour-details {
+      width: 50%;
+      display: flex;
       align-items: center;
-      padding: 10px 20px;
-      border-bottom: 1px solid #ccc;
     }
-    .modal-header .title {
-      font-size: 20px;
-      font-weight: bold;
-      font-family: 'Funnel Display', sans-serif;
+    .hourly-item .hour-temperature {
+      width: 20%;
+      text-align: right;
     }
-    .modal-header .close-btn {
-      background-color: #e57373;
-      border: none;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
+    /* Radar Embed */
+    #radar-embed {
+      margin: 20px 0;
     }
-    .modal-content {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-    }
-    .changelog-item {
-      margin-bottom: 15px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #ddd;
-      font-family: monospace;
-    }
-    /* === LOGIN & REGISTER MODAL STYLES === */
-    .auth-form {
-      max-width: 400px;
-      margin: 40px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background-color: white;
-      color: black;
-    }
-    .auth-form h2 {
-      text-align: center;
-      font-family: 'Funnel Display', sans-serif;
-    }
-    .auth-form label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    .auth-form input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
-    }
-    .auth-form button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 20px;
-      background-color: #27ae60;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .auth-form .toggle-link {
-      text-align: center;
-      margin-top: 15px;
-      cursor: pointer;
-      color: blue;
-    }
-    /* === ACCESS PROMPT MODAL (for guests) === */
-    .access-modal {
+    /* Popup Styles */
+    .overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 2100;
+      background-color: rgba(0, 0, 0, 0.5);
       display: none;
-      flex-direction: column;
-      background-color: white;
-      color: black;
-    }
-    .access-modal .modal-header {
-      background-color: #27ae60;
-      color: white;
-    }
-    .access-modal .modal-header .title {
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .access-modal .modal-content {
-      flex: 1;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 18px;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup {
+      background-color: white;
       padding: 20px;
+      border-radius: 0;
+      width: 90%;
+      max-width: 500px;
+      text-align: left;
+      position: relative;
+    }
+    .popup .close-btn {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      background: none;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .popup h2 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #333;
+    }
+    .popup p {
+      font-size: 0.9em;
+      color: #555;
+    }
+    .popup .release-date {
+      font-size: 0.8em;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .popup button {
+      padding: 10px;
+      margin: 10px 0 0 0;
+      border: 1px solid #ccc;
+      background-color: orange;
+      color: white;
+      cursor: pointer;
+      border-radius: 0;
+    }
+    .popup .cancel-btn {
+      background-color: #ccc;
+    }
+    footer {
       text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #aaa;
     }
-    /* === DARK MODE STYLES === */
-    .dark-mode {
-      background-color: #222 !important;
-      color: white !important;
-    }
-    .dark-mode header { background-color: #111; }
-    .dark-mode .left-panel,
-    .dark-mode .right-panel,
-    .dark-mode .comments-box {
-      background-color: #333;
-      color: white;
-    }
-    .dark-mode .post {
-      background-color: #444;
-      color: white;
-    }
-    .dark-mode .view-post-box {
-      background-color: #444;
-      color: white;
-    }
-    .dark-mode .dropdown {
-      background-color: #333;
-      color: white;
-      border: 1px solid #555;
-    }
-    .dark-mode .modal { background-color: #222; color: white; }
-    .dark-mode .auth-form { background-color: #333; color: white; border: 1px solid #555; }
-    .dark-mode .access-modal { background-color: #222; color: white; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="taskbar">
-      <h1>Zentrix</h1>
-      <div class="search-bar">
-        <input type="text" placeholder="Search..." />
-      </div>
-    </div>
-    <div class="icons">
-      <!-- Sign In Button with dropdown -->
-      <button class="sign-in" id="sign-in-btn">Sign In</button>
-      <!-- Settings Icon -->
-      <i class="material-icons" id="settings-icon" style="cursor:pointer;">settings</i>
-      <!-- Info Icon -->
-      <i class="material-icons" id="info-icon" style="cursor:pointer;">info</i>
-      <!-- Dropdown containers -->
-      <div class="dropdown" id="settings-dropdown" style="top:50px; right:100px;"></div>
-      <div class="dropdown" id="signin-dropdown" style="top:50px; right:250px;"></div>
-      <div class="dropdown" id="info-dropdown" style="top:50px; right:10px;"></div>
-    </div>
-  </header>
 
-  <div class="container">
-    <div class="left-panel" id="posts">
-      <!-- Posts generated dynamically -->
-    </div>
-    <div class="right-panel" id="post-details">
-      <h2>View Post</h2>
-      <p>Select a media item to display detailed info here.</p>
-      <div id="post-title"></div>
-      <div id="post-thumbnail"></div>
-      <div class="view-post-box" id="view-post-box">
-        <h3 id="view-post-title"></h3>
-        <div class="info" id="view-post-info"></div>
-        <div class="description" id="view-post-description"></div>
-        <div class="release-date" id="view-post-date"></div>
-      </div>
-      <!-- Comments Section -->
-      <div class="comments-box" id="comments-box">
-        <h3>Comments (<span id="comments-count">0</span>)</h3>
-        <div id="comment-list"></div>
-        <!-- More Section Buttons -->
-        <div class="more-section">
-          <button class="comment-btn" id="add-comment-btn">+ Comment</button>
-          <!-- New Comment Form inserted dynamically -->
-          <button class="share-btn" id="share-btn">Share</button>
-          <!-- Share Panel inserted dynamically -->
-          <button class="report-btn" id="report-btn">Report</button>
-          <button class="mark-btn" id="mark-btn">Mark it (18+)</button>
-        </div>
-      </div>
+<div class="container">
+  <div class="weather-title">Weather</div>
+  <button id="fetch-location-btn" onclick="showLocationConsentPopup()">Fetch Current Location</button>
+  <select id="unit-dropdown" onchange="updateWeatherUnit()">
+    <option value="imperial">Fahrenheit (°F)</option>
+    <option value="metric">Celsius (°C)</option>
+  </select>
+  <select id="follow-me-dropdown" onchange="followMe()">
+    <option value="">Follow Me</option>
+    <option value="YouTube">YouTube</option>
+    <option value="Discord">Discord</option>
+  </select>
+  <select id="whatsnew-dropdown" onchange="handleWhatsNewChange()">
+    <option value="">What's New</option>
+    <option value='{"version":"2025.001.4.0", "description": "Added new features including search history, radar embed, and improved error handling.", "date": "2/8/2025"}'>2025.001.4.0</option>
+  </select>
+  <input type="text" class="search-box" id="city-input" placeholder="Enter city name" oninput="onSearchInput()" onkeydown="handleKeyDown(event)">
+  <div id="search-results" class="search-results" style="display: none;"></div>
+
+  <!-- Current Location Text -->
+  <div id="current-location" style="text-align: center; font-size: 1.2em; margin-bottom: 15px;"></div>
+
+  <div id="weather-result" class="weather-info">
+    <!-- Weather info will be displayed here -->
+  </div>
+  
+  <!-- Radar Embed -->
+  <div id="radar-embed">
+    <!-- The radar embed will appear here -->
+  </div>
+  
+  <div class="error-message" id="error-message"></div>
+
+  <div class="hourly-forecast">
+    <div class="hourly-forecast-list" id="hourly-forecast">
+      <!-- Hourly forecast will be displayed here -->
     </div>
   </div>
 
-  <!-- === CHANGELOG MODAL (Full Screen UI) === -->
-  <div class="modal" id="changelog-modal">
-    <div class="modal-header">
-      <div class="title">Changelog</div>
-      <button class="close-btn" id="close-changelog">X</button>
-    </div>
-    <div class="modal-content" id="changelog-content">
-      <!-- Changelog items inserted dynamically -->
-    </div>
+  <footer>(C) 2025 ToxicStudios - Do Not Distribute!</footer>
+</div>
+
+<!-- Popup Overlay for Location Consent -->
+<div id="overlay" class="overlay">
+  <div class="popup">
+    <p>Do you consent to fetch your current location? <span style="font-size: 12px;">We do NOT track your location!</span></p>
+    <button onclick="fetchLocation()">Accept</button>
+    <button class="cancel-btn" onclick="closePopup()">Cancel</button>
   </div>
+</div>
 
-  <!-- === LOGIN MODAL === -->
-  <div class="modal" id="login-modal">
-    <div class="modal-header">
-      <div class="title" style="font-family: 'Funnel Display', sans-serif;">Login to Zentrix</div>
-      <button class="close-btn" id="close-login">X</button>
-    </div>
-    <div class="modal-content">
-      <div class="auth-form" id="login-form">
-        <h2 style="font-family: 'Funnel Display', sans-serif;">Login</h2>
-        <label for="login-username">Email/Username</label>
-        <input type="text" id="login-username" placeholder="Enter your email or username" />
-        <label for="login-password">Password</label>
-        <input type="password" id="login-password" placeholder="Enter your password" />
-        <button id="login-btn-submit">Login</button>
-        <div class="toggle-link" id="to-register">Register with Zentrix</div>
-      </div>
-    </div>
+<!-- Popup Overlay for What's New -->
+<div id="whatsnew-overlay" class="overlay">
+  <div class="popup" id="whatsnew-popup">
+    <button class="close-btn" onclick="closeWhatsNewPopup()">X</button>
+    <h2 id="changelog-title"></h2>
+    <div class="release-date" id="release-date"></div>
+    <p id="changelog-description"></p>
+    <button onclick="closeWhatsNewPopup()">Close</button>
   </div>
+</div>
 
-  <!-- === REGISTER MODAL === -->
-  <div class="modal" id="register-modal">
-    <div class="modal-header">
-      <div class="title" style="font-family: 'Funnel Display', sans-serif;">Register with Zentrix</div>
-      <button class="close-btn" id="close-register">X</button>
-    </div>
-    <div class="modal-content">
-      <div class="auth-form" id="register-form">
-        <h2 style="font-family: 'Funnel Display', sans-serif;">Register</h2>
-        <label for="register-username">Username (max 50 characters)</label>
-        <input type="text" id="register-username" placeholder="Enter your username" maxlength="50" />
-        <label for="register-email">Email</label>
-        <input type="email" id="register-email" placeholder="Enter your email" />
-        <label for="register-password">Password (max 50 characters)</label>
-        <input type="password" id="register-password" placeholder="Enter your password" maxlength="50" />
-        <button id="register-btn-submit">Register</button>
-        <div class="toggle-link" id="to-login">Already with Zentrix? Login Here</div>
-      </div>
-    </div>
-  </div>
+<script>
+  const apiKey = "7933e6835b69f299032f55f257098511"; // OpenWeather API key
+  let userLocation = null;
+  let unit = "imperial"; // Default unit (Fahrenheit)
 
-  <!-- === ACCESS PROMPT MODAL (for guests) === -->
-  <div class="modal access-modal" id="access-modal">
-    <div class="modal-header">
-      <div class="title">Do More With Zentrix!</div>
-      <button class="close-btn" id="close-access">X</button>
-    </div>
-    <div class="modal-content">
-      Login to Zentrix to gain more access to comment posts, manage your posts, and more!
-    </div>
-  </div>
-
-  <script>
-    /* ===== GLOBAL VARIABLES & DATA ===== */
-    let currentPost = null;
-    let darkModeOn = false; // dark mode flag
-    let isLoggedIn = false; // not logged in (guest) by default
-
-    // Posts data (each with its own id)
-    const postsData = [
-      {
-        id: 1,
-        Title: "Post 1",
-        Info: "This is the info for Post 1",
-        Description: "Description for Post 1 goes here.",
-        ReleaseDate: "2025-01-01",
-        Thumbnail: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-      },
-      {
-        id: 2,
-        Title: "Post 2",
-        Info: "This is the info for Post 2",
-        Description: "Description for Post 2 goes here.",
-        ReleaseDate: "2025-01-02",
-        Thumbnail: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-      },
-      {
-        id: 3,
-        Title: "Post 3",
-        Info: "This is the info for Post 3",
-        Description: "Description for Post 3 goes here.",
-        ReleaseDate: "2025-01-03",
-        Thumbnail: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-      },
-      {
-        id: 4,
-        Title: "Post 4",
-        Info: "This is the info for Post 4",
-        Description: "Description for Post 4 goes here.",
-        ReleaseDate: "2025-01-04",
-        Thumbnail: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-      },
-      {
-        id: 5,
-        Title: "Post 5",
-        Info: "This is the info for Post 5",
-        Description: "Description for Post 5 goes here.",
-        ReleaseDate: "2025-01-05",
-        Thumbnail: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-      }
-    ];
-
-    // Comments data keyed by "Post <post.id>"
-    const commentsData = {
-      "Post 1": [
-        { id: 1, username: "User1", comment: "Great post!", date: "2025-01-01" },
-        { id: 2, username: "User2", comment: "Nice insights.", date: "2025-01-02" },
-        { id: 3, username: "User3", comment: "Really informative.", date: "2025-01-03" },
-        { id: 4, username: "User4", comment: "I learned a lot!", date: "2025-01-04" }
-      ],
-      "Post 2": [
-        { id: 1, username: "User5", comment: "Interesting content.", date: "2025-01-02" }
-      ],
-      "Post 3": [
-        { id: 1, username: "User6", comment: "Really liked it!", date: "2025-01-03" }
-      ],
-      "Post 4": [
-        { id: 1, username: "User7", comment: "Amazing!", date: "2025-01-04" }
-      ],
-      "Post 5": [
-        { id: 1, username: "User8", comment: "Awesome post.", date: "2025-01-05" }
-      ]
-    };
-
-    // Changelog data (newer versions appear at the top)
-    const changelogData = [
-      {
-        Version: "2025.001.14.0",
-        Date: "2025/06/01",
-        Description: "Added comment toggle, share panel, and dropdown menus."
-      },
-      {
-        Version: "2025.001.13.0",
-        Date: "2025/05/15",
-        Description: "Improved post layout and updated icons."
-      }
-    ];
-
-    /* ===== GENERATE POSTS ===== */
-    postsData.forEach(post => {
-      const postElement = document.createElement('div');
-      postElement.classList.add('post');
-      postElement.innerHTML = `
-        <img src="${post.Thumbnail}" alt="Post Thumbnail">
-        <div class="title">${post.Title}</div>
-        <div class="info">${post.Info}</div>
-      `;
-      postElement.onclick = () => { showPostDetails(post); };
-      document.getElementById('posts').appendChild(postElement);
-    });
-
-    /* ===== SHOW POST DETAILS & COMMENTS ===== */
-    function showPostDetails(post) {
-      currentPost = post;
-      document.getElementById('view-post-title').textContent = post.Title;
-      document.getElementById('view-post-info').textContent = post.Info;
-      document.getElementById('view-post-description').textContent = post.Description;
-      document.getElementById('view-post-date').textContent = `Release Date: ${post.ReleaseDate}`;
-      document.getElementById('post-thumbnail').innerHTML = `<img src="${post.Thumbnail}" alt="Post Thumbnail">`;
-      document.getElementById('comments-box').style.display = 'block';
-      // Remove any existing new comment form or share panel if present
-      const existingForm = document.getElementById('new-comment-form');
-      if (existingForm) { existingForm.remove(); }
-      const existingSharePanel = document.getElementById('share-panel');
-      if (existingSharePanel) { existingSharePanel.remove(); }
-      document.getElementById('add-comment-btn').textContent = "+ Comment";
-      loadComments(post);
+  // --- Follow Me Dropdown ---
+  function followMe() {
+    const dropdown = document.getElementById("follow-me-dropdown");
+    const selectedOption = dropdown.value;
+    if (selectedOption === "YouTube") {
+      window.open("https://www.youtube.com/@toxic5018.2", "_blank");
+    } else if (selectedOption === "Discord") {
+      window.open("https://discord.gg/qet79cugV6", "_blank");
     }
+    // Reset dropdown to default
+    dropdown.value = "";
+  }
 
-    function loadComments(post) {
-      const postKey = `Post ${post.id}`;
-      const comments = commentsData[postKey] || [];
-      let commentListHtml = "";
-      
-      if (comments.length <= 3) {
-        comments.forEach(comment => {
-          commentListHtml += `
-            <div class="comment-item">
-              <div class="icon">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Profile Picture">
-              </div>
-              <div class="comment-info">
-                <div class="username">${comment.username}</div>
-                <div class="comment-name">${comment.comment}</div>
-                <div class="date">${comment.date}</div>
-              </div>
-            </div>
-          `;
-        });
+  // --- What's New Dropdown & Popup ---
+  function handleWhatsNewChange() {
+    const dropdown = document.getElementById("whatsnew-dropdown");
+    const selectedValue = dropdown.value;
+    if (selectedValue) {
+      const info = JSON.parse(selectedValue);
+      document.getElementById("changelog-title").innerText = "Changelog " + info.version;
+      document.getElementById("release-date").innerText = "Release Date: " + info.date;
+      document.getElementById("changelog-description").innerText = info.description;
+      document.getElementById("whatsnew-overlay").style.display = "flex";
+    }
+  }
+  function closeWhatsNewPopup() {
+    document.getElementById("whatsnew-overlay").style.display = "none";
+    document.getElementById("whatsnew-dropdown").value = "";
+  }
+
+  // --- Show No WiFi Error (using Material Icons) ---
+  function showNoWifiError() {
+    document.getElementById("error-message").innerHTML = `<i class="material-icons">signal_wifi_off</i> No WiFi Connection`;
+  }
+
+  // --- Search History Handling ---
+  function addToHistory(city) {
+    let history = JSON.parse(localStorage.getItem("weatherSearchHistory") || "[]");
+    const now = new Date().getTime();
+    history.push({ city, timestamp: now });
+    history = history.filter(item => now - item.timestamp < 86400000);
+    localStorage.setItem("weatherSearchHistory", JSON.stringify(history));
+  }
+  function showHistory() {
+    let history = JSON.parse(localStorage.getItem("weatherSearchHistory") || "[]");
+    const now = new Date().getTime();
+    history = history.filter(item => now - item.timestamp < 86400000);
+    if (history.length === 0) {
+      document.getElementById("search-results").style.display = "none";
+      return;
+    }
+    const uniqueCities = [...new Set(history.map(item => item.city))];
+    const resultsHTML = uniqueCities.map(city => `<div onclick="selectCity('${city}')">${city}</div>`).join('');
+    document.getElementById("search-results").innerHTML = resultsHTML;
+    document.getElementById("search-results").style.display = "block";
+  }
+  function onSearchInput() {
+    const city = document.getElementById("city-input").value;
+    if (city === "") {
+      showHistory();
+    } else {
+      fetchSuggestions();
+    }
+  }
+
+  // --- Handle Enter Key in Search Box ---
+  function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      const city = document.getElementById("city-input").value;
+      if (city) {
+        fetchWeather(city);
       } else {
-        comments.slice(0, 3).forEach(comment => {
-          commentListHtml += `
-            <div class="comment-item">
-              <div class="icon">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Profile Picture">
-              </div>
-              <div class="comment-info">
-                <div class="username">${comment.username}</div>
-                <div class="comment-name">${comment.comment}</div>
-                <div class="date">${comment.date}</div>
-              </div>
-            </div>
-          `;
-        });
-        commentListHtml += `<div id="extra-comments" style="display:none;">`;
-        comments.slice(3).forEach(comment => {
-          commentListHtml += `
-            <div class="comment-item">
-              <div class="icon">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Profile Picture">
-              </div>
-              <div class="comment-info">
-                <div class="username">${comment.username}</div>
-                <div class="comment-name">${comment.comment}</div>
-                <div class="date">${comment.date}</div>
-              </div>
-            </div>
-          `;
-        });
-        commentListHtml += `</div>`;
-        commentListHtml += `<div id="show-more">Show ${comments.length - 3} More</div>`;
+        fetchLocation();
       }
-      
-      document.getElementById('comment-list').innerHTML = commentListHtml;
-      document.getElementById('comments-count').textContent = comments.length;
-      
-      const showMore = document.getElementById('show-more');
-      if (showMore) {
-        showMore.addEventListener('click', function() {
-          const extra = document.getElementById('extra-comments');
-          if (extra.style.display === "none") {
-            extra.style.display = "block";
-            showMore.textContent = "Show Less";
-          } else {
-            extra.style.display = "none";
-            showMore.textContent = `Show ${comments.length - 3} More`;
-          }
-        });
+      document.getElementById("search-results").style.display = "none";
+    }
+  }
+
+  // --- Select City from Suggestions or History ---
+  function selectCity(cityName) {
+    document.getElementById("city-input").value = cityName;
+    document.getElementById("search-results").style.display = "none";
+    fetchWeather(cityName);
+  }
+
+  // --- Location Consent Popup ---
+  function showLocationConsentPopup() {
+    document.getElementById("overlay").style.display = "flex";
+  }
+  function closePopup() {
+    document.getElementById("overlay").style.display = "none";
+  }
+  // --- Fetch Location ---
+  function fetchLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        userLocation = position.coords;
+        fetchWeatherByCoords(userLocation.latitude, userLocation.longitude);
+        closePopup();
+      }, function() {
+        document.getElementById("error-message").innerText = "Unable to fetch location.";
+        closePopup();
+      });
+    } else {
+      document.getElementById("error-message").innerText = "Geolocation is not supported by this browser.";
+      closePopup();
+    }
+  }
+  // --- Fetch Weather by Coordinates ---
+  async function fetchWeatherByCoords(lat, lon) {
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`);
+      const data = await response.json();
+      document.getElementById("error-message").innerText = "";
+      const cityName = `${data.name}, ${data.sys.country}`;
+      // Also set the search box to this location
+      document.getElementById("city-input").value = cityName;
+      fetchWeather(cityName);
+    } catch (error) {
+      console.error('Error fetching weather by coordinates:', error);
+      showNoWifiError();
+    }
+  }
+  // --- Helper: Fetch Precipitation Chance ---
+  async function fetchPrecipChance(city) {
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`);
+      const data = await response.json();
+      if (data.list && data.list.length > 0) {
+        return Math.round(data.list[0].pop * 100);
+      } else {
+        return 0;
       }
+    } catch (error) {
+      console.error("Error fetching precipitation chance:", error);
+      return 0;
     }
-
-    /* ===== ACCESS MODAL (for guests trying restricted actions) ===== */
-    function showAccessModal() {
-      const modal = document.getElementById('access-modal');
-      modal.style.display = "flex";
-    }
-    document.getElementById('close-access').addEventListener('click', () => {
-      document.getElementById('access-modal').style.display = "none";
-    });
-
-    /* ===== TOGGLE NEW COMMENT FORM ===== */
-    function toggleCommentForm() {
-      if (!isLoggedIn) {
-        showAccessModal();
+  }
+  // --- Fetch and Display Weather Info ---
+  async function fetchWeather(city) {
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`);
+      const data = await response.json();
+      if (data.cod === "404") {
+        document.getElementById("error-message").innerText = "City not found.";
+        document.getElementById("weather-result").innerHTML = "";
+        document.getElementById("hourly-forecast").innerHTML = "";
         return;
       }
-      const form = document.getElementById('new-comment-form');
-      const addCommentBtn = document.getElementById('add-comment-btn');
-      if (form) {
-        form.remove();
-        addCommentBtn.textContent = "+ Comment";
-      } else {
-        const commentsBox = document.getElementById('comments-box');
-        if (commentsBox.style.display === "none") {
-          commentsBox.style.display = "block";
-        }
-        const formDiv = document.createElement('div');
-        formDiv.id = 'new-comment-form';
-        formDiv.classList.add('new-comment-form');
-        formDiv.innerHTML = `
-          <label for="new-comment-text">Comment</label>
-          <textarea id="new-comment-text" maxlength="100" placeholder="Write your comment here..."></textarea>
-          <div class="char-count" id="char-count">0 / 100</div>
-          <div class="buttons">
-            <button class="create-btn" id="create-comment-btn">Create</button>
-            <button class="discard-btn" id="discard-comment-btn">Discard</button>
+      document.getElementById("error-message").innerText = "";
+      addToHistory(`${data.name}, ${data.sys.country}`);
+      document.getElementById("current-location").innerText = `Location: ${data.name}, ${data.sys.country}`;
+      const precipChance = await fetchPrecipChance(city);
+      const temp = Math.round(data.main.temp);
+      const realFeel = Math.round(data.main.feels_like);
+      const description = getWeatherDescription(data.weather[0].description);
+      const windSpeed = Math.round(data.wind.speed * 2.237); // m/s to mph
+      const windGusts = data.wind.gust ? Math.round(data.wind.gust * 2.237) : 0;
+      const weatherHTML = `
+        <img class="weather-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="weather icon">
+        <div class="temp">${temp}°${unit === 'metric' ? 'C' : 'F'}</div>
+        <div>${description}</div>
+        <div class="real-feel">Real Feel: ${realFeel}°${unit === 'metric' ? 'C' : 'F'}</div>
+        <div class="details">
+          <div>Humidity: ${data.main.humidity}%</div>
+          <div>Wind Speed: ${windSpeed} mph</div>
+          <div>Wind Gusts: ${windGusts} mph</div>
+          <div style="color: #aaa;">Precipitation: ${precipChance}%</div>
+        </div>
+      `;
+      document.getElementById("weather-result").innerHTML = weatherHTML;
+      document.getElementById("radar-embed").innerHTML = `
+        <iframe src="https://radar.weather.gov/?settings=v1_eyJhZ2VuZGEiOnsiaWQiOm51bGwsImNlbnRlciI6Wy02Ni4yODMsMzguNDIxXSwibG9jYXRpb24iOm51bGwsInpvb20iOjQuMDAwOTE1NjQ1NjM4NzU2fSwiYW5pbWF0aW5nIjpmYWxzZSwiYmFzZSI6InN0YW5kYXJkIiwiYXJ0Y2MiOmZhbHNlLCJjb3VudHkiOmZhbHNlLCJjd2EiOmZhbHNlLCJyZmMiOmZhbHNlLCJzdGF0aW9ucyI6ZmFsc2UsIm1lbnUiOnRydWUsInNob3J0RnVzZWRPbmx5IjpmYWxzZSwib3BhY2l0eSI6eyJhbGVydHMiOjAuOCwibG9jYWwiOjAuNiwibG9jYWxTdGF0aW9ucyI6MC44LCJuYXRpb25hbCI6MC42fX0%3D" width="100%" height="400" style="border: none;"></iframe>
+      `;
+      fetchHourlyForecast(city);
+    } catch (error) {
+      console.error('Error fetching weather:', error);
+      showNoWifiError();
+    }
+  }
+  // --- Fetch Hourly Forecast ---
+  async function fetchHourlyForecast(city) {
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`);
+      const data = await response.json();
+      const hourlyHTML = data.list.slice(0, 24).map(hour => {
+        const hourTime = new Date(hour.dt * 1000);
+        const hourTemp = Math.round(hour.main.temp);
+        const hourRealFeel = Math.round(hour.main.feels_like);
+        const hourDescription = getWeatherDescription(hour.weather[0].description);
+        const hourTimeFormatted = formatTime(hourTime);
+        return `
+          <div class="hourly-item">
+            <div class="hour-time">${hourTimeFormatted}</div>
+            <div class="hour-details">
+              <img class="weather-icon" src="https://openweathermap.org/img/wn/${hour.weather[0].icon}.png" alt="icon">
+              <span>${hourDescription}</span>
+            </div>
+            <div class="hour-temperature">
+              <strong>${hourTemp}°${unit === 'metric' ? 'C' : 'F'}</strong><br>
+              <span class="real-feel">${hourRealFeel}°${unit === 'metric' ? 'C' : 'F'}</span>
+            </div>
           </div>
         `;
-        addCommentBtn.insertAdjacentElement('afterend', formDiv);
-        addCommentBtn.textContent = "- Comment";
-        const textarea = document.getElementById('new-comment-text');
-        const charCount = document.getElementById('char-count');
-        textarea.addEventListener('input', () => {
-          charCount.textContent = `${textarea.value.length} / 100`;
-        });
-        document.getElementById('create-comment-btn').addEventListener('click', () => {
-          const commentText = textarea.value.trim();
-          if (commentText === "") {
-            alert("Please enter a comment before creating.");
-            return;
-          }
-          const postKey = `Post ${currentPost.id}`;
-          if (!commentsData[postKey]) {
-            commentsData[postKey] = [];
-          }
-          const newId = commentsData[postKey].length + 1;
-          const newComment = {
-            id: newId,
-            username: 'User' + (Math.floor(Math.random() * 100) + 1),
-            comment: commentText,
-            date: new Date().toLocaleDateString()
-          };
-          commentsData[postKey].push(newComment);
-          loadComments(currentPost);
-          formDiv.remove();
-          addCommentBtn.textContent = "+ Comment";
-        });
-        document.getElementById('discard-comment-btn').addEventListener('click', () => {
-          formDiv.remove();
-          addCommentBtn.textContent = "+ Comment";
-        });
-      }
+      }).join('');
+      document.getElementById("hourly-forecast").innerHTML = hourlyHTML;
+    } catch (error) {
+      console.error('Error fetching hourly forecast:', error);
+      showNoWifiError();
     }
-
-    /* ===== TOGGLE SHARE PANEL ===== */
-    function toggleSharePanel() {
-      if (!isLoggedIn) {
-        showAccessModal();
-        return;
-      }
-      const existingPanel = document.getElementById('share-panel');
-      if (existingPanel) {
-        existingPanel.remove();
-        return;
-      }
-      const sharePanel = document.createElement('div');
-      sharePanel.id = 'share-panel';
-      sharePanel.classList.add('share-panel');
-      sharePanel.innerHTML = `
-        <button id="copy-link-btn"><i class="material-icons">content_copy</i> Copy Link</button>
-        <button id="my-device-btn"><i class="material-icons">phone_android</i> My Device</button>
-      `;
-      const shareBtn = document.getElementById('share-btn');
-      shareBtn.insertAdjacentElement('afterend', sharePanel);
-      document.getElementById('copy-link-btn').addEventListener('click', () => {
-        alert("Link copied to clipboard!");
-      });
-      document.getElementById('my-device-btn').addEventListener('click', () => {
-        alert("Sharing to your device!");
-      });
+  }
+  // --- Format Time Helper ---
+  function formatTime(date) {
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    return `${formattedHours}:${minutes} ${ampm}`;
+  }
+  // --- Weather Description Mapping ---
+  function getWeatherDescription(description) {
+    const mapping = {
+      "clear sky": "Clear Sky",
+      "few clouds": "Mostly Sunny",
+      "scattered clouds": "Mostly Cloudy",
+      "broken clouds": "Mostly Cloudy",
+      "shower rain": "Scattered Showers",
+      "rain": "Heavy Rain",
+      "thunderstorm": "Scattered Thunderstorms",
+      "snow": "Heavy Snow",
+      "mist": "Foggy"
+    };
+    return mapping[description] || description.charAt(0).toUpperCase() + description.slice(1);
+  }
+  // --- Update Weather Unit ---
+  function updateWeatherUnit() {
+    unit = document.getElementById("unit-dropdown").value;
+    const city = document.getElementById("city-input").value;
+    if (city) {
+      fetchWeather(city);
+    } else if (userLocation) {
+      fetchWeatherByCoords(userLocation.latitude, userLocation.longitude);
     }
+  }
+</script>
 
-    /* ===== RESTRICTED ACTIONS (Report, Mark) ===== */
-    document.getElementById('report-btn').addEventListener('click', () => {
-      if (!isLoggedIn) {
-        showAccessModal();
-        return;
-      }
-      alert("Reporting post...");
-    });
-    document.getElementById('mark-btn').addEventListener('click', () => {
-      if (!isLoggedIn) {
-        showAccessModal();
-        return;
-      }
-      const markBtn = document.getElementById('mark-btn');
-      if (markBtn.textContent === 'Mark it (18+)') {
-        markBtn.textContent = 'Mark it Appropriate';
-        markBtn.style.backgroundColor = '#27ae60';
-      } else {
-        markBtn.textContent = 'Mark it (18+)';
-        markBtn.style.backgroundColor = 'lightcoral';
-      }
-    });
-
-    /* ===== DROPDOWN TOGGLES ===== */
-    // Settings dropdown (contains Dark Mode)
-    document.getElementById('settings-icon').addEventListener('click', () => {
-      const dropdown = document.getElementById('settings-dropdown');
-      if (dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      } else {
-        dropdown.innerHTML = `<button id="dark-mode-btn">Dark Mode</button>`;
-        dropdown.style.display = "block";
-        document.getElementById('dark-mode-btn').addEventListener('click', () => {
-          if (darkModeOn) {
-            document.body.classList.remove('dark-mode');
-            darkModeOn = false;
-          } else {
-            document.body.classList.add('dark-mode');
-            darkModeOn = true;
-          }
-          dropdown.style.display = "none";
-        });
-      }
-    });
-    // Sign In dropdown
-    document.getElementById('sign-in-btn').addEventListener('click', () => {
-      const dropdown = document.getElementById('signin-dropdown');
-      if (dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      } else {
-        dropdown.innerHTML = `
-          <button id="guest-btn">Continue as Guest</button>
-          <button id="login-btn">Login</button>
-          <button id="register-btn">Register</button>
-        `;
-        dropdown.style.display = "block";
-        document.getElementById('guest-btn').addEventListener('click', () => { 
-          isLoggedIn = false; 
-          alert("You are now continuing as a guest."); 
-          dropdown.style.display = "none"; 
-        });
-        document.getElementById('login-btn').addEventListener('click', () => {
-          dropdown.style.display = "none";
-          openLoginModal();
-        });
-        document.getElementById('register-btn').addEventListener('click', () => {
-          dropdown.style.display = "none";
-          openRegisterModal();
-        });
-      }
-    });
-    // Info dropdown: shows a list with "Changelog"
-    document.getElementById('info-icon').addEventListener('click', () => {
-      const dropdown = document.getElementById('info-dropdown');
-      if (dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      } else {
-        dropdown.innerHTML = `<button id="changelog-btn">Changelog</button>`;
-        dropdown.style.display = "block";
-        document.getElementById('changelog-btn').addEventListener('click', () => {
-          dropdown.style.display = "none";
-          openChangelogModal();
-        });
-      }
-    });
-
-    /* ===== OPEN & CLOSE CHANGELOG MODAL ===== */
-    function openChangelogModal() {
-      const modal = document.getElementById('changelog-modal');
-      const contentDiv = document.getElementById('changelog-content');
-      contentDiv.innerHTML = "";
-      const sortedLogs = changelogData.sort((a, b) => (a.Date < b.Date ? 1 : -1));
-      sortedLogs.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.classList.add('changelog-item');
-        itemDiv.innerHTML = `<pre>${JSON.stringify(item, null, 2)}</pre>`;
-        contentDiv.appendChild(itemDiv);
-      });
-      if (darkModeOn) {
-        modal.style.backgroundColor = "#222";
-        modal.style.color = "white";
-      } else {
-        modal.style.backgroundColor = "white";
-        modal.style.color = "black";
-      }
-      modal.style.display = "flex";
-    }
-    document.getElementById('close-changelog').addEventListener('click', () => {
-      document.getElementById('changelog-modal').style.display = "none";
-    });
-
-    /* ===== LOGIN MODAL ===== */
-    function openLoginModal() {
-      const modal = document.getElementById('login-modal');
-      document.getElementById('login-username').value = "";
-      document.getElementById('login-password').value = "";
-      if (darkModeOn) {
-        modal.style.backgroundColor = "#222";
-        modal.style.color = "white";
-      } else {
-        modal.style.backgroundColor = "white";
-        modal.style.color = "black";
-      }
-      modal.style.display = "flex";
-    }
-    document.getElementById('close-login').addEventListener('click', () => {
-      document.getElementById('login-modal').style.display = "none";
-    });
-    document.getElementById('login-btn-submit').addEventListener('click', () => {
-      // Here you would implement Firebase login functionality.
-      alert("Logging in...");
-      isLoggedIn = true;
-      document.getElementById('login-modal').style.display = "none";
-    });
-    document.getElementById('to-register').addEventListener('click', () => {
-      document.getElementById('login-modal').style.display = "none";
-      openRegisterModal();
-    });
-
-    /* ===== REGISTER MODAL ===== */
-    function openRegisterModal() {
-      const modal = document.getElementById('register-modal');
-      document.getElementById('register-username').value = "";
-      document.getElementById('register-email').value = "";
-      document.getElementById('register-password').value = "";
-      if (darkModeOn) {
-        modal.style.backgroundColor = "#222";
-        modal.style.color = "white";
-      } else {
-        modal.style.backgroundColor = "white";
-        modal.style.color = "black";
-      }
-      modal.style.display = "flex";
-    }
-    document.getElementById('close-register').addEventListener('click', () => {
-      document.getElementById('register-modal').style.display = "none";
-    });
-    document.getElementById('register-btn-submit').addEventListener('click', () => {
-      // Here you would implement Firebase registration functionality.
-      alert("Registering...");
-      isLoggedIn = true;
-      document.getElementById('register-modal').style.display = "none";
-    });
-    document.getElementById('to-login').addEventListener('click', () => {
-      document.getElementById('register-modal').style.display = "none";
-      openLoginModal();
-    });
-
-    /* ===== EVENT LISTENERS FOR OTHER BUTTONS ===== */
-    document.getElementById('add-comment-btn').addEventListener('click', toggleCommentForm);
-    document.getElementById('share-btn').addEventListener('click', toggleSharePanel);
-  </script>
 </body>
 </html>
